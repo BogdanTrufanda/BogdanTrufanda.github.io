@@ -2,6 +2,44 @@
 /*General*/
 /*-------------------------------------*/
 
+.dropbtn {
+  background-color:transparent; 
+  color:white;
+  padding: 16px;
+  padding-right: 100px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Francois One';
+ 
+}
+
+.dropdown {
+  background-color:transparent; 
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  text-align: left;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
 body {
     margin: 0;
     padding: 0;
@@ -51,19 +89,29 @@ p{
     padding-top: 30px;
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 30px;
+    padding-bottom: 5px;
   font-size: 1.5rem;
   color:white;
   font-family: Helvetica, Arial, sans-serif;
+}
+ul{
+  padding-left: 130px;
+  padding-right: 130px;
+  list-style-type: "→ ";
+  text-align: justify;
+  text-justify: inter-word;
+  padding-top: 5px;
+font-size: 1.4rem;
+color:white;
+font-family: Helvetica, Arial, sans-serif;
 }
 img {
     display: block;
     margin-left: auto;
     padding-top: 80px;
     margin-right: auto;
-    width: 50%;
-    width: 700px;
-    height: 400px;
+    width: 30%;
+    height: 30%;
   }
 /*-------------------------------------*/
 /*Navbar*/
@@ -74,7 +122,6 @@ img {
 }
 
 .navbar a {
-    float: left;
     color: white;
     text-align: center;
     padding: 12px;
