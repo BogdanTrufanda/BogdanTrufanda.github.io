@@ -1,47 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <title>ASET</title>
-        <link rel="stylesheet" type="text/css" href="../../../style/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta charset="UTF-8">
-    </head>
+<head>
+    <title>ASET - About OWASP Zap</title>
+    <link rel="stylesheet" type="text/css" href="../../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
 
-    <body>
-
-
-
-
-        <div class="navbar">
-            <div class="navbar-right">
-                <a href="../tools.html">Tools</a>
-        <a href="../../index.html">Home</a>
-        <a style="color: #7FFF00;" href="../ZAP proxy/zap.html">ZAP</a>
-            </div>
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../../index.html">Home</a>
+            <a href="../../tools.html">Tools</a>
+            <a style="color: #7FFF00;" href="../ZAP proxy/zap.html">ZAP Proxy</a>
         </div>
-        <img alt="poza" src="poza.png">
-        <p>
-        Zed Attack Proxy (ZAP) is a free, open-source penetration testing tool being maintained under the umbrella of the Open Web Application Security Project (OWASP). ZAP is designed specifically for testing web applications and is both flexible and extensible. At its core, ZAP is what is known as a “man-in-the-middle proxy.” It stands between the tester’s browser and the web application so that it can intercept and inspect messages sent between browser and web application, modify the contents if needed, and then forward those packets on to the destination. It can be used as a stand-alone application, and as a daemon process.
+    </div>
+    <img alt="No image found" src="OWASPZapLogo.png">
+    
+    <p>
+        Zed Attack Proxy (ZAP) is a free, open-source penetration testing tool being maintained under the umbrella of
+        the Open Web Application Security Project (OWASP). ZAP is designed specifically for testing web applications and
+        is both flexible and extensible. At its core, ZAP is what is known as a “man-in-the-middle proxy.” It stands
+        between the tester’s browser and the web application so that it can intercept and inspect messages sent between
+        browser and web application, modify the contents if needed, and then forward those packets on to the
+        destination. It can be used as a stand-alone application, and as a daemon process.
 
-        The purpose of this tool is to penetrate through the site, attack (hit) its URLs, scan the URLs hit, and check how prone the site is to the various risks/attacks.
-        
-         
-        
+        The purpose of this tool is to penetrate through the site, attack (hit) its URLs, scan the URLs hit, and check
+        how prone the site is to the various risks/attacks.
+
         Following are the types of attacks which ZAP provides:
     </p>
-        <ul>
-        <li>Quick Attack: This helps you test the application using ZAP in the quickest way possible. Under the tab Quick Start, put the URL in the URL to attack field and click on the 'Attack' button. 
-        </li><li>ZAP will use its spider to crawl through the application, which will automatically scan all of the pages discovered. It will then use the active scanner to attack all of the pages. This is a useful way to perform an initial assessment of an application.
-        </li><li>Spider: It is used to automatically discover new resources/URLs on your website. It visits those URLs, identifies the hyperlinks and adds them to the list.
-        </li><li>Active Scan: It is used to find the potential vulnerabilities by using the known attacks against the selected targets. It gets its targets from the spider attack.
-        </li><li>There are more attacks which ZAP provides, other than the ones mentioned above; like AJAX Spider, Fuzz, Forced Browse Site etc.</li>
+    <ul>
+        <li>Quick Attack: This helps you test the application using ZAP in the quickest way possible. Under the tab
+            Quick Start, put the URL in the URL to attack field and click on the 'Attack' button.
+        </li>
+        <li>ZAP will use its spider to crawl through the application, which will automatically scan all of the pages
+            discovered. It will then use the active scanner to attack all of the pages. This is a useful way to perform
+            an initial assessment of an application.
+        </li>
+        <li>Spider: It is used to automatically discover new resources/URLs on your website. It visits those URLs,
+            identifies the hyperlinks and adds them to the list.
+        </li>
+        <li>Active Scan: It is used to find the potential vulnerabilities by using the known attacks against the
+            selected targets. It gets its targets from the spider attack.
+        </li>
+        <li>There are more attacks which ZAP provides, other than the ones mentioned above; like AJAX Spider, Fuzz,
+            Forced Browse Site etc.</li>
     </ul>
-    </body>
+</body>
 
 </html>
-
