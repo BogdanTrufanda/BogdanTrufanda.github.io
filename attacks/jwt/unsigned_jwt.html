@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>ASET</title>
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+
+
+
+        <div class="navbar">
+            <div class="navbar-right">
+              <a style="color: #7FFF00;" href="jwt.html">JWT</a>
+                <a href="../index.html">Home</a>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Attacks</button>
+                    <div class="dropdown-content">
+                        <a href="../attacks/sqlinjection.html">SQL injection</a>
+                        <a href="../attacks/XSS.html">XSS</a>
+                        <a href="../attacks/IUV.html">Improper Input Validation</a>
+                    </div>
+                  </div>         
+
+            </div>
+        </div>
+
+        <div class="titlu">
+            <h1>Forge an essentially unsigned JWT token</h1>
+        </div>
+     <p>
+      This challenge involves forging a valid JWT for a user that does not exist in the database but make the application believe it is still legit.
+      Forge an essentially unsigned JWT token that impersonates the (non-existing) user jwtn3d@juice-sh.op.
+  
+     </p>
+     <ul>
+     <li>
+      Log in as any user to receive a valid JWT in the Authorization header.  </li>
+      <li>Copy the JWT (i.e. everything after Bearer in the Authorization header) and decode it.</li>
+      <li>Change the email attribute in the JSON to jwtn3d@juice-sh.op.</li>
+      <li>Change the value of the alg property in the header part from HS256 to none.</li>
+      <li>Encode the header to base64url. Similarly, encode the payload to base64url.</li>
+      <li>Join the two strings obtained above with a . (dot symbol) and add a . at the end of the obtained string. So, effectively it becomes base64url(header).base64url(payload).</li>
+      <li>Change the Authorization header of a subsequent request to the retrieved JWT (prefixed with Bearer as before) and submit the request. Alternatively you can set the token cookie to the JWT which be used to populate any future request with that header.</li>
+    </ul>
+    <ul class="liste">
+        <li><a href="ujwt.mp4" target="_blank">Demo</a></li>
+      </ul>  
+    </body>
+    
+
+</html>
+
