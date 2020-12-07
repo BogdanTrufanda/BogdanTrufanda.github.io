@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASET - FIle Upload attack</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <div class="dropdown">
+                <button class="dropbtn">Attacks</button>
+                <div class="dropdown-content">
+                    <a href="../../attacks/all.html">All</a>
+                    <a href="../../attacks/sqlinjection.html">SQL injection</a>
+                    <a href="../../ttacks/XSS.html">XSS</a>
+                    <a href="../../attacks/IUV.html">Improper Input Validation</a>
+                </div>
+            </div>
+            <a style="color: #7FFF00;" href="../../attacks/Upload/upload.html">File Upload</a>
+        </div>
+    </div>
+
+    <div class="titlu">
+        <h1>Exploiting Unrestricted File Upload</h1>
+    </div>
+    <img style="width: 650px;height: 500px; padding-left:3%;" src="unrestrictedUploadFIle.png">
+    <ul>
+        <li>1) Allow Listing File Extensions:
+            <p>
+                Applications that check the file extensions using an allow list method also need to validate the full
+                filename to prevent any bypass.
+
+                The list of permitted extensions should be reviewed as it can contain malicious extensions as well. For
+                instance, in case of having “.shtml” in the list, the application can be vulnerable to SSI attacks.
+                Some of the bypass techniques for the deny list methods such as using double extensions are also
+                applicable
+                here and should be checked.
+            </p>
+        </li>
+        <li>2) “Content-Type” Header Validation:
+            <p>“Content-Type” entity in the header of the request indicates the Internet media type of the message
+                content. Sometimes web applications use this parameter in order to recognise a file as a valid one. For
+                instance, they only accept the files with the “Content-Type” of “text/plain”.
+
+                It is possible to bypass this protection by changing this parameter in the request header using a web
+                proxy.
+            </p>
+        </li>
+        <li>3) Sensitive Information disclosure:
+
+            <p>Sometimes web applications intentionally or unintentionally use some functions (or APIs) to check the
+                file types in order to process them further. For instance, when an application resize an image file, it
+                may just show an error message when non-image files are uploaded without saving them on the server.
+
+                If it reads the few first characters (or headers), it can be bypassed by inserting malicious code after
+                some valid header or within the file’s metadata.
+                Inserting code in the comments section or those section that have no effect on the main file can also
+                lead to a bypass.
+                The inserted data can be obfuscated or encoded if the application detects a malicious code using
+                specific patterns or signatures.
+                Uploaded file can be crafted to create a malicious code in case of being compressed by the application.
+            </p>
+        </li>
+        <li>Prevention Methods (Solutions to be more secure):
+
+            <p>In order to make a Windows server more secure, it is very important to follow the folowing
+                recommendations:
+            </p>
+            <ul>
+                <li>The file types allowed to be uploaded should be restricted to only those that are necessary for
+                    business functionality.</li>
+                <li>Never accept a filename and its extension directly without having an allow list filter.</li>
+                <li>It is necessary to have a list of only permitted extensions on the web application. And, file
+                    extension can be selected from the list</li>
+                <li>All the control characters and Unicode ones should be removed from the filenames and their
+                    extensions without any exception. Also, the special characters such as “;”, “:”, “>”, “<”, “/” ,”\”,
+                    additional “.”, “*”, “%”, “$”, and so on should be discarded as well. If it is applicable and
+                    there is no need to have Unicode characters, it is highly recommended to only accept
+                    Alpha-Numeric characters and only 1 dot as an input for the file name and the extension; in
+                    which the file name and also the extension should not be empty at all (regular expression:
+                    [a-zA-Z0-9]{1,200}\.[a-zA-Z0-9]{1,10}).</li>
+                <li>Limit the filename length. For instance, the maximum length of the name of a file plus its extension
+                    should be less than 255 characters (without any directory) in an NTFS partition.</li>
+                <li>Limit the file size to a maximum value in order to prevent denial of service attacks (on file space
+                    or other web application’s functions such as the image resizer</li>
+                <li>Uploaded directory should not have any “execute” permission and all the script handlers should be
+                    removed from these directories.</li>
+                <li>Use Cross Site Request Forgery protection methods.</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+
+
+</html>
