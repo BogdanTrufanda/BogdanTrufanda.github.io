@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>ASET</title>
+		<link rel="stylesheet" type="text/css" href="../../style/style.css">
+			<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+				<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+					<link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+							<meta content="width=device-width, initial-scale=1" name="viewport" />
+							<meta charset="UTF-8">
+							</head>
+							<body>
+								<div class="navbar">
+									<div class="navbar-right">
+										<a href="../../options/tools.html">Tools</a>
+										<a href="../../index.html">Home</a>
+										<a style="color: #7FFF00;" href="ee.html">Repetitive Registration</a>
+									</div>
+								</div>
+								<div class="titlu">
+									<center>
+										<h1 style="font-size:260%;">Repetitive Registration - Mitigation</h1>
+									</center>
+								</div>
+								<p style="font-size:160%;">
+          If your client-side forms validate that the passwords match, there isn’t really a reason to send both pieces of data to the server. It’s not useful for anything and just adds to your attack surface.
+        							</p>
+								<p style="font-size:160%;">
+           Not every piece of data needs to be sent to the server, especially if it’s not used for anything once it gets there.
+        							</p>
+								<p style="font-size:160%;">
+           Input validation is performed to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.
+        							</p>
+								<p style="font-size:160%;">
+           Data from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.
+        							</p>
+								<p style="font-size:160%;">
+           Input Validation should not be used as the primary method of preventing XSS, SQL Injection and other attacks which are covered in respective cheat sheets but can significantly contribute to reducing their impact if implemented properly.  
+        							</p>	
+								<p style="font-size:160%;">
+	   Input validation should be applied on both syntactical and Semantic level. 
+								</p>
+								<p style="font-size:160%;">
+		Syntactic validation should enforce correct syntax of structured fields (e.g. SSN, date, currency symbol).				
+								</p>
+								<p style="font-size:160%;">
+		Semantic validation should enforce correctness of their values in the specific business context (e.g. start date is before end date, price is within expected range).				
+								</p>
+								<p style="font-size:160%;">
+		It is always recommended to prevent attacks as early as possible in the processing of the user's (attacker's) request. Input validation can be used to detect unauthorized input before it is processed by the application.	
+								</p>
+								<p style="font-size:160%;">
+		Input validation can be implemented using any programming technique that allows effective enforcement of syntactic and semantic correctness, for example:				
+								</p>
+										<ul style="font-size:140%;">
+										<li>
+           	 Data type validators available natively in web application frameworks (such as Django Validators, Apache Commons Validators etc).  
+	</li>
+										<li>
+	         Validation against JSON Schema and XML Schema (XSD) for input in these formats.  
+	</li>
+										<li>
+                 Type conversion (e.g. Integer.parseInt() in Java, int() in Python) with strict exception handling.  
+	</li>
+										<li>
+	         Minimum and maximum value range check for numerical parameters and dates, minimum and maximum length check for strings.  
+	</li>
+										<li>
+	         Array of allowed values for small sets of string parameters (e.g. days of week).  
+	</li>
+										<li>
+	         Regular expressions for any other structured data covering the whole input string (^...$) and not using "any character" wildcard (such as . or \S).  
+	</li>
+									</ul>
+								
+           
+							</body>
+						</html>
