@@ -1,127 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>ASET</title>
-		<link rel="stylesheet" type="text/css" href="../../style/style.css">
-			<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-				<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
-					<link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
-						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-							<meta content="width=device-width, initial-scale=1" name="viewport" />
-							<meta charset="UTF-8">
-							</head>
-							<body>
-								<div class="navbar">
-									<div class="navbar-right">
-										<a href="../../options/tools.html">Tools</a>
-										<a href="../../index.html">Home</a>
-										<a style="color: #7FFF00;" href="jtr.html">John the Ripper</a>
-									</div>
-								</div>
-								<div class="titlu">
-									<center>
-										<h1 style="font-size:260%;">John the Ripper - Attack</h1>
-									</center>
-								</div>
-								<p style="font-size:160%;">
-           John the Ripper works in 3 distinct modes to crack the passwords: 
-        </p>
-								<ul style="font-size:140%;">
-									<li>
-           	Single Crack Mode 
-</li>
-									<li>
-	        Wordlist Crack ModeWordlist Crack Mode
-</li>
-									<li>
-                Incremental Mode
-</li>
-								</ul>
-								<p style="font-size:160%;">
-           In the Single Crack Mode, John the Ripper makes use of the information available to it in the form of a username and other information. This can be used to crack the password files with the format of Username : Password.  
-        </p>
-								<p style="font-size:160%;">
-           For example, if the username is Hacker it would try the following passwords: hacker, HACKER, hacker1, h-acker, hacker=, etc.  
-        </p>
-								<p style="font-size:160%;">
-           In the Wordlist Crack Mode, John the Ripper uses a wordlist that can also be called a Dictionary and it compares the hashes of the words present in the Dictionary with the hash. We can use and desired wordlist. John also comes in build with a password.lst which contains most of the common passwords.
-        </p>
-								<p style="font-size:160%;">
-           For a text file given, named crack.txt that contains the username and the password which is encrypted in SHA1 encryption we will use the following command:  
-        </p>
-								<center>
-									<p style="font-size:160%;">
-user@kali:~#john --wordlist=/usr/share/john/password.lst --format=raw-sha1 crack.txt
-</p>
-								</center>
-								<p style="font-size:160%;">
-            Incremental mode is the most powerful cracking mode, it can try all possible character combinations as passwords. However, it is assumed that cracking with this mode will never terminate because of the number of combinations being too large (actually, it will terminate if you set a low password length limit or make it use a small charset), and you'll have to interrupt it earlier.That's one reason why this mode deals with trigraph frequencies, separately for each character position and for each password length, to crack as many passwords as possible within a limited time.   
-        </p>
-								<p style="font-size:160%;font-weight: bold">
-           Cracking the User Credentials  
-        </p>
-								<p style="font-size:160%;">
-           We are going to find out two ways in which we will crack the user credentials of a Linux user.  
-        </p>
-								<p style="font-size:160%;">
-           Before that we will have to understand what is a shadow file.
-        </p>
-								<p style="font-size:160%;">
-           In the Linux operating system, a shadow password file is a system file in which encrypted user password is stored so that they are not available to the people who try to break into the system. It is located at /etc/shadow.  
-        </p>
-								<p style="font-size:160%;font-weight: bold">
-           First Method   
-        </p>
-								<p style="font-size:160%;">
-           Now, for the first method, we will crack the credentials of a particular user “kali”.  
-        </p>
-								<p style="font-size:160%;">
-           We will open the shadow file and will copy the information of the user “kali” into a text file.  
-        </p>
-								<p style="font-size:160%;">
-           After getting the user’s information we will use John the Ripper to crack the password :  
-        </p>
-								<center>
-									<p style="font-size:160%;">
-user@kali:~#john information.txt
-</p>
-								</center>
-								<p style="font-size:160%;">
-           It will give us the decrypted password for the user we have just copied the information.  
-        </p>
-								<p style="font-size:160%;font-weight: bold">
-           Second Method  
-        </p>
-								<p style="font-size:160%;">
-           Now, for the second method, we will collectively crack the credentials for all the users. 
-        </p>
-								<p style="font-size:160%;">
-           To do this we will have to use John the ripper utility called “unshadow”.
-        </p>
-								<center>
-									<p style="font-size:160%;">
-user@kali:~#unshadow /etc/passwd /etc/shadow > information.txt
-</p>
-								</center>
-								<p style="font-size:160%;">
-           Here the unshadow command is combining the /etc/passwd and /etc/shadow files so that John can use them to crack them. We are using both files so that John can use the information provided to efficiently crack the credentials of all users. 
-        </p>
-								<p style="font-size:160%;font-weight: bold">
-           Stopping and Restoring Cracking  
-        </p>
-								<p style="font-size:160%;">
-           While John the ripper is working on cracking some passwords we can interrupt or pause the cracking and Restore or Resume the Cracking again at our convenience.  
-        </p>
-								<p style="font-size:160%;">
-           So while John the Ripper is running you can interrupt the cracking by Pressing “q” or Crtl+C.  
-        </p>
-								<p style="font-size:160%;">
-           And for resuming the cracking process we can use the -restore option of John the Ripper:  
-        </p>
-								<center>
-									<p style="font-size:160%;">
-user@kali:~#john --restore
-</p>
-								</center>
-							</body>
-						</html>
+   <head>
+      <title>ASET - John the Ripper</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <div class="dropdown">
+               <button class="dropbtn">Attacks</button>
+               <div class="dropdown-content">
+                  <a href="../../attacks/CSRF/csrf.html">Cross-site Request Reforging</a>
+                  <a href="../../attacks/RepetitiveRegistration/rr.html">Repetitive Registration</a>
+               </div>
+            </div>
+            <a style="color: #7FFF00;" href="jtr.html">John the Ripper</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>John the Ripper - Attack</h1>
+      </div>
+      <p style="font-size:160%;">
+         John the Ripper works in 3 distinct modes to crack the passwords: 
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            Single Crack Mode 
+         </li>
+         <li>
+            Wordlist Crack ModeWordlist Crack Mode
+         </li>
+         <li>
+            Incremental Mode
+         </li>
+      </ul>
+      <p style="font-size:160%;">
+         In the Single Crack Mode, John the Ripper makes use of the information available to it in the form of a username and other information. This can be used to crack the password files with the format of Username : Password.  
+      </p>
+      <p style="font-size:160%;">
+         For example, if the username is Hacker it would try the following passwords: hacker, HACKER, hacker1, h-acker, hacker=, etc.  
+      </p>
+      <p style="font-size:160%;">
+         In the Wordlist Crack Mode, John the Ripper uses a wordlist that can also be called a Dictionary and it compares the hashes of the words present in the Dictionary with the hash. We can use and desired wordlist. John also comes in build with a password.lst which contains most of the common passwords.
+      </p>
+      <p style="font-size:160%;">
+         For a text file given, named crack.txt that contains the username and the password which is encrypted in SHA1 encryption we will use the following command:  
+      </p>
+      <center>
+         <p style="font-size:160%;">
+            user@kali:~#john --wordlist=/usr/share/john/password.lst --format=raw-sha1 crack.txt
+         </p>
+      </center>
+      <p style="font-size:160%;">
+         Incremental mode is the most powerful cracking mode, it can try all possible character combinations as passwords. However, it is assumed that cracking with this mode will never terminate because of the number of combinations being too large (actually, it will terminate if you set a low password length limit or make it use a small charset), and you'll have to interrupt it earlier.That's one reason why this mode deals with trigraph frequencies, separately for each character position and for each password length, to crack as many passwords as possible within a limited time.   
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Cracking the User Credentials  
+      </p>
+      <p style="font-size:160%;">
+         We are going to find out two ways in which we will crack the user credentials of a Linux user.  
+      </p>
+      <p style="font-size:160%;">
+         Before that we will have to understand what is a shadow file.
+      </p>
+      <p style="font-size:160%;">
+         In the Linux operating system, a shadow password file is a system file in which encrypted user password is stored so that they are not available to the people who try to break into the system. It is located at /etc/shadow.  
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         First Method   
+      </p>
+      <p style="font-size:160%;">
+         Now, for the first method, we will crack the credentials of a particular user “kali”.  
+      </p>
+      <p style="font-size:160%;">
+         We will open the shadow file and will copy the information of the user “kali” into a text file.  
+      </p>
+      <p style="font-size:160%;">
+         After getting the user’s information we will use John the Ripper to crack the password :  
+      </p>
+      <center>
+         <p style="font-size:160%;">
+            user@kali:~#john information.txt
+         </p>
+      </center>
+      <p style="font-size:160%;">
+         It will give us the decrypted password for the user we have just copied the information.  
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Second Method  
+      </p>
+      <p style="font-size:160%;">
+         Now, for the second method, we will collectively crack the credentials for all the users. 
+      </p>
+      <p style="font-size:160%;">
+         To do this we will have to use John the ripper utility called “unshadow”.
+      </p>
+      <center>
+         <p style="font-size:160%;">
+            user@kali:~#unshadow /etc/passwd /etc/shadow > information.txt
+         </p>
+      </center>
+      <p style="font-size:160%;">
+         Here the unshadow command is combining the /etc/passwd and /etc/shadow files so that John can use them to crack them. We are using both files so that John can use the information provided to efficiently crack the credentials of all users. 
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Stopping and Restoring Cracking  
+      </p>
+      <p style="font-size:160%;">
+         While John the ripper is working on cracking some passwords we can interrupt or pause the cracking and Restore or Resume the Cracking again at our convenience.  
+      </p>
+      <p style="font-size:160%;">
+         So while John the Ripper is running you can interrupt the cracking by Pressing “q” or Crtl+C.  
+      </p>
+      <p style="font-size:160%;">
+         And for resuming the cracking process we can use the -restore option of John the Ripper:  
+      </p>
+      <center>
+         <p style="font-size:160%;">
+            user@kali:~#john --restore
+         </p>
+      </center>
+   </body>
+</html>

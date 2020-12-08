@@ -1,80 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>ASET</title>
-		<link rel="stylesheet" type="text/css"  href="../../style/style.css">
-			<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-				<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
-					<link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
-						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-							<meta content="width=device-width, initial-scale=1" name="viewport" />
-							<meta charset="UTF-8">
-							</head>
-							<body>
-								<div class="navbar">
-									<div class="navbar-right">
-										<a href="../../options/tools.html">Tools</a>
-										<a href="../../index.html">Home</a>
-										<a style="color: #7FFF00;" href="retireJs.html">Retire.JS</a>
-									</div>
-								</div>
-								<div class="titlu">
-									<center>
-										<h1 style="font-size:260%;">Retire.JS - Intro</h1>
-									</center>
-								</div>
-								<center>
-									<img src="retireJs_logo.jpg">
-									</center>
-									<p style="font-size:160%;">
-            Retire.js is a free open source scanner for detecting the use of JavaScript libraries with known vulnerabilities. 
-        </p>
-									<p style="font-size:160%;">
-           There is a plethora of JavaScript libraries for use on the web and in node.js apps out there. This greatly simplifies, but we need to stay update on security fixes. "Using Components with Known Vulnerabilities" is now a part of the OWASP Top 10 and insecure libraries can pose a huge risk for your webapp. The goal of Retire.js is to help you detect use of version with known vulnerabilities.
-        </p>
-								<p style="font-size:160%;font-weight: bold">
-           Retire.js has these parts: 
-        </p>
-								<ul style="font-size:140%;">
-									<li>
-           	A command line scanner 
-</li>
-									<li>
-	        A grunt plugin
-</li>
-									<li>
-                A Chrome extension
-</li>
-                                                                        <li>
-           	A Firefox extension
-</li>
-                                                                        <li>
-           	Burp and OWASP Zap plugin
-</li>
-								</ul>
-								<p style="font-size:160%;font-weight: bold">
-	   Command line scanner
-	</p>
-								<p style="font-size:160%;">
-	   Scan a web app or node app for use of vulnerable JavaScript libraries and/or node modules.
-	</p>
-								<p style="font-size:160%;font-weight: bold">
-	   Grunt plugin
-	</p>
-								<p style="font-size:160%;">
-	   grunt-retire scans your grunt enabled app for use of vulnerable JavaScript libraries and/or node modules.
-	</p>
-								<p style="font-size:160%;font-weight: bold">
-	   Chrome and Firefox extensions
-	</p>
-								<p style="font-size:160%;">
-	   Scans visited sites for references to insecure libraries, and puts warnings in the developer console. A icon on the address bar displays will also indicated if vulnerable libraries were loaded.
-	</p>
-								<p style="font-size:160%;font-weight: bold">
-	    Burp and OWASP ZAP plugins 
-	</p>
-								<p style="font-size:160%;">
-	   Retire.js has been adapted as a plugin for the penetration testing tools Burp and OWASP ZAP. 
-	</p>
-								</body>
-							</html>
+   <head>
+      <title>ASET - Retire.JS</title>
+      <link rel="stylesheet" type="text/css"  href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <div class="dropdown">
+               <button class="dropbtn">Attacks</button>
+               <div class="dropdown-content">
+                  <a href="../../attacks/CSRF/csrf.html">Cross-site Request Reforging</a>
+                  <a href="../../attacks/RepetitiveRegistration/rr.html">Repetitive Registration</a>
+               </div>
+            </div>
+            <a style="color: #7FFF00;" href="retireJs.html">Retire.JS</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Retire.JS - Intro</h1>
+         </center>
+      </div>
+      <center>
+         <img src="retireJs_logo.jpg">
+      </center>
+      <p style="font-size:160%;">
+         Retire.js is a free open source scanner for detecting the use of JavaScript libraries with known vulnerabilities. 
+      </p>
+      <p style="font-size:160%;">
+         There is a plethora of JavaScript libraries for use on the web and in node.js apps out there. This greatly simplifies, but we need to stay update on security fixes. "Using Components with Known Vulnerabilities" is now a part of the OWASP Top 10 and insecure libraries can pose a huge risk for your webapp. The goal of Retire.js is to help you detect use of version with known vulnerabilities.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Retire.js has these parts: 
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            A command line scanner 
+         </li>
+         <li>
+            A grunt plugin
+         </li>
+         <li>
+            A Chrome extension
+         </li>
+         <li>
+            A Firefox extension
+         </li>
+         <li>
+            Burp and OWASP Zap plugin
+         </li>
+      </ul>
+      <p style="font-size:160%;font-weight: bold">
+         Command line scanner
+      </p>
+      <p style="font-size:160%;">
+         Scan a web app or node app for use of vulnerable JavaScript libraries and/or node modules.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Grunt plugin
+      </p>
+      <p style="font-size:160%;">
+         grunt-retire scans your grunt enabled app for use of vulnerable JavaScript libraries and/or node modules.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Chrome and Firefox extensions
+      </p>
+      <p style="font-size:160%;">
+         Scans visited sites for references to insecure libraries, and puts warnings in the developer console. A icon on the address bar displays will also indicated if vulnerable libraries were loaded.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Burp and OWASP ZAP plugins 
+      </p>
+      <p style="font-size:160%;">
+         Retire.js has been adapted as a plugin for the penetration testing tools Burp and OWASP ZAP. 
+      </p>
+   </body>
+</html>

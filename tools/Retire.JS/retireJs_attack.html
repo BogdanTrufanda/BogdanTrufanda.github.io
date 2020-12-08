@@ -1,60 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>ASET</title>
-		<link rel="stylesheet" type="text/css" href="../../style/style.css">
-			<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-				<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
-					<link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
-						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-							<meta content="width=device-width, initial-scale=1" name="viewport" />
-							<meta charset="UTF-8">
-							</head>
-							<body>
-								<div class="navbar">
-									<div class="navbar-right">
-										<a href="../../options/tools.html">Tools</a>
-										<a href="../../index.html">Home</a>
-										<a style="color: #7FFF00;" href="retireJs.html">Retire.JS</a>
-									</div>
-								</div>
-								<div class="titlu">
-									<center>
-										<h1 style="font-size:260%;">Retire.JS - Attack</h1>
-									</center>
-								</div>
-								<p style="font-size:160%;">
-           We will see how we can use Retire.JS with ZAP to identify vulnerabilities in JavaScript libraries.
-        </p>
-                                                                <p style="font-size:160%;">
-           The first step is to download the Retire add-on for ZAP from the internet. No link will be attached as the versions and links always change. 
-        </p>
-                                                                <p style="font-size:160%;">
-           1. Go to File -> Load Add-on File and load the add-on to the ZAP 
-        </p>
-<img src="retireJs_1.jpg">
-								<p style="font-size:160%;">
-           2. Click onthe retirejs-XXXXX.zap (where XXXXX is the current release) and update the ZAP with the add-on by click open.(You won’t be able to observe any UI changes after adding the add-on but you can verify the update by checking /home/<NAME>/.ZAP/plugin folder. )  
-        </p>
-								<p style="font-size:160%;">
-           3. Go to Tools → Options → Local Proxy and set the hostname/ip address and the port number for the proxy. (In this example, the port is set to 7777 which is selected randomly)  
-        </p>
-<img src="retireJs_3.jpg">
-								<p style="font-size:160%;">
-           4. Now ZAP tool is ready to capture the traffic going through the above set port number. Next step is to configure the browser to send traffic through this port number so ZAP tool can trace them. In Firefox, go to Edit → Preferences and in the Advanced options, click on Settings under the Network tab.
-        </p>
-								<p style="font-size:160%;">
-           Select the Manual proxy configuration and set the hostname/ip and the port number.
-        </p>
-<img src="retireJs_4.jpg">							
-								<p style="font-size:160%;">
-           5. Now, go to Firefox and access the your application. You will see the traffic goes through ZAP proxy.   
-        </p>
-<img src="retireJs_5.jpg">
-								<p style="font-size:160%;">
-           Continue the scanning, you will observe the reported JavaScript vulnerabilities under the Alerts tab  
-        </p>
-<img src="retireJs_51.jpg">
-								
-							</body>
-						</html>
+   <head>
+      <title>ASET - Retire.JS</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <div class="dropdown">
+               <button class="dropbtn">Attacks</button>
+               <div class="dropdown-content">
+                  <a href="../../attacks/CSRF/csrf.html">Cross-site Request Reforging</a>
+                  <a href="../../attacks/RepetitiveRegistration/rr.html">Repetitive Registration</a>
+               </div>
+            </div>
+            <a style="color: #7FFF00;" href="retireJs.html">Retire.JS</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Retire.JS - Attack</h1>
+         </center>
+      </div>
+      <p style="font-size:160%;">
+         We will see how we can use Retire.JS with ZAP to identify vulnerabilities in JavaScript libraries.
+      </p>
+      <p style="font-size:160%;">
+         The first step is to download the Retire add-on for ZAP from the internet. No link will be attached as the versions and links always change. 
+      </p>
+      <p style="font-size:160%;">
+         1. Go to File -> Load Add-on File and load the add-on to the ZAP 
+      </p>
+      <img src="retireJs_1.jpg">
+      <p style="font-size:160%;">
+         2. Click onthe retirejs-XXXXX.zap (where XXXXX is the current release) and update the ZAP with the add-on by click open.(You won’t be able to observe any UI changes after adding the add-on but you can verify the update by checking /home/
+         <NAME>
+         /.ZAP/plugin folder. )  
+      </p>
+      <p style="font-size:160%;">
+         3. Go to Tools → Options → Local Proxy and set the hostname/ip address and the port number for the proxy. (In this example, the port is set to 7777 which is selected randomly)  
+      </p>
+      <img src="retireJs_3.jpg">
+      <p style="font-size:160%;">
+         4. Now ZAP tool is ready to capture the traffic going through the above set port number. Next step is to configure the browser to send traffic through this port number so ZAP tool can trace them. In Firefox, go to Edit → Preferences and in the Advanced options, click on Settings under the Network tab.
+      </p>
+      <p style="font-size:160%;">
+         Select the Manual proxy configuration and set the hostname/ip and the port number.
+      </p>
+      <img src="retireJs_4.jpg">							
+      <p style="font-size:160%;">
+         5. Now, go to Firefox and access the your application. You will see the traffic goes through ZAP proxy.   
+      </p>
+      <img src="retireJs_5.jpg">
+      <p style="font-size:160%;">
+         Continue the scanning, you will observe the reported JavaScript vulnerabilities under the Alerts tab  
+      </p>
+      <img src="retireJs_51.jpg">
+   </body>
+</html>
