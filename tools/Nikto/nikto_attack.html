@@ -1,141 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>ASET</title>
-		<link rel="stylesheet" type="text/css" href="../../style/style.css">
-			<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-				<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
-					<link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
-						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-							<meta content="width=device-width, initial-scale=1" name="viewport" />
-							<meta charset="UTF-8">
-							</head>
-							<body>
-								<div class="navbar">
-									<div class="navbar-right">
-										<a href="../../options/tools.html">Tools</a>
-										<a href="../../index.html">Home</a>
-										<a style="color: #7FFF00;" href="w3af.html">W3af</a>
-									</div>
-								</div>
-								<div class="titlu">
-									<center>
-										<h1 style="font-size:260%;">W3af - Attack</h1>
-									</center>
-								</div>
-								<p style="font-size:160%;">
-           w3af is a simple tool to use once you understand the basic concepts behind it. 
-        </p>
-                                                                <p style="font-size:160%;font-weight: bold">
-           Web Application Scanning 
-        </p>
-                                                                <p style="font-size:160%;">
-           Black-box web application scanning, if we abstract from the details, is a simple process: 
-        </p>
-								<ul style="font-size:140%;">
-									<li>
-           	Identify all links, forms, query string parameters. 
-</li>
-									<li>
-	        Send specially crafted strings to each input and analyze the output
-</li>
-									<li>
-                Generate a report with the findings
-</li>
-								</ul>
-                                                                <p style="font-size:160%;font-weight: bold">
-           w3af’s architecture
-        </p>
-                                                                <p style="font-size:160%;">
-           The w3af framework is divided into three main sections: 
-        </p>
-								<ul style="font-size:140%;">
-									<li>
-           	The core, which coordinates the whole process and provides libraries for using in plugins. 
-</li>
-									<li>
-	        The user interfaces, which allow the user to configure and start scans
-</li>
-									<li>
-                The plugins, which find links and vulnerabilities
-</li>
-								</ul>
-                                                                <p style="font-size:160%;font-weight: bold">
-           w3af’s phases
-        </p>
-                                                                <p style="font-size:160%;">
-           w3af follows the steps you would perfom in a web application penetration test, see “Web Application Scanning” above. In order to do so it defines different types of plugins which are going to be called by the core in a specific order. 
-        </p>
-								<p style="font-size:160%;">
-           Starting with a target URL provided by the user, w3af will first try to identify all URLs, forms and query string parameters in the application by the means of crawl plugins. A very good example of this type of plugin is the web_spider which will extract URLs from a page, follow those links and once again extract URLs from it. Following that process it will create a complete application link and form map.  
-        </p>
-								<p style="font-size:160%;">
-           Once the application has been mapped, audit plugins will send specially crafted strings to each parameter in order to trigger bugs in the application’s code. When a bug is found it will be reported to the user. The most used audit plugin is sqli which will find error-based SQL injections.  
-        </p>
-								<p style="font-size:160%;">
-           Identified vulnerabilities, debug and error messages, all are reported to the user with output plugins. These plugins will write the messages in different formats to suit your needs. In most cases a text file is what users need, but for integration into other tools XML file format is also available.
-        </p>
-                                                                <p style="font-size:160%;font-weight: bold">
-           Configuration
-        </p>
-                                                                <p style="font-size:160%;">
-           The framework can be configured using two very different settings: plugin configuration and global configuration. 
-        </p>
-                                                                <p style="font-size:160%;font-weight: bold">
-           Plugin configuration
-        </p>
-                                                                <p style="font-size:160%;">
-           Plugins might have configuration parameters, in all cases where the plugin has a setting a default value has been set. We recommend you read the setting help and in some cases the plugin source code in order to understand exactly what will happen if you change the configuration. 
-        </p>
-                                                                <p style="font-size:160%;font-weight: bold">
-           Global configuration
-        </p>
-                                                                <p style="font-size:160%;">
-           The framework-wide configuration settings change the core’s behavior and are split in two: http-settings and misc-settings. As with the plugin configuration, all settings in the global configuration have a default value and should be changed with care. Changing a setting here might reduce the scanner’s performance, have the framework generate thousands of unnecessary HTTP requests, etc. 
-        </p>
-                                                                <p style="font-size:160%;font-weight: bold">
-           Saving your settings
-        </p>
-                                                                <p style="font-size:160%;">
-           All user defined settings can be saved using profiles, this helps users run their scans multiple times and in some cases run them with slightly different configurations. Creating, saving and loading profiles is an easy task that’s done from within the user interface. 
-        </p>
-                                                                <p style="font-size:160%;font-weight: bold">
-           Find XSS and SQL injections
-        </p>
-								<p style="font-size:160%;">
-            Finding SQL injections and Cross-Site Scriptings is one of the most common tasks performed by w3af users, so lets explain how to do it. First you’ll have to start w3af’s GUI, from the command line run “w3af_gui” and you should see the main window.   
-        </p>
-								<p style="font-size:160%;">
-           The first step is to set the target URL to the web application you want to scan, this example we’ll use “http://target.tld/”. 
-        </p>
-								<p style="font-size:160%;">
-           Next, you need to configure w3af to use a set of crawl plugins in order to identify the links and forms where the vulnerabilities might be located. In order to keep this example simple, we’ll just enable the web_spider plugin. To achieve this click on “crawl” on the Plugin tree, scroll down and enable web_spider.  
-        </p>
-								<p style="font-size:160%;">
-           w3af can now identify all inputs, but it won’t identify Cross-Site Scriptings and SQL injections unless we instruct it to by enabling the corresponding audit plugins. In this case the plugins are xss and sqli. Also in the plugin tree, open the audit plugin branch and enable the plugins.
-        </p>
-								<p style="font-size:160%;">
-           Before starting the scan you can save the current settings to a profile which will help you repeat this scan in a next run, or customize it with advanced settings. On the profile list right-click over empty_profile, which should be in bold letters indicating that changes have been made to it, and select “Save configuration to a new profile”. Complete the required information and you should see a new profile in the list.  
-        </p>
-								<p style="font-size:160%;">
-           Now we’re ready to start the scan! In the main menu find the play icon and click it, it will start the scan with the current configuration.   
-        </p>
-								<p style="font-size:160%;">
-           After starting the scan w3af will change it’s tab to the “Log” where you’ll be able to see what’s going on in the framework. At any point you can switch to the “Results” tab and browse through the Knowledge Base tree. When you click on a vulnerability you’ll be able to see the following information:  
-        </p>
-                                                                <ul style="font-size:140%;">
-									<li>
-           	Vulnerability description
-</li>
-									<li>
-	        HTTP request and response associated with the vulnerability
-</li>
-									<li>
-                Highlighted section in the HTTP response that was used to identify the vulnerability
-</li>
-								</ul>
-								<p style="font-size:160%;">
-           Congratulations! You’ve completed your first w3af scan and identified important vulnerabilities in your web application.  
-        </p>								
-							</body>
-						</html>
+   <head>
+      <title>ASET - Nikto</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <div class="dropdown">
+               <button class="dropbtn">Attacks</button>
+               <div class="dropdown-content">
+                  <a href="../../attacks/CSRF/csrf.html">Cross-site Request Reforging</a>
+                  <a href="../../attacks/RepetitiveRegistration/rr.html">Repetitive Registration</a>
+               </div>
+            </div>
+            <a style="color: #7FFF00;" href="jtr.html">Nikto</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Nikto - Attack</h1>
+         </center>
+      </div>
+      <p style="font-size:160%;">
+         Nikto is a preinstalled tool in Kali Linux so basically in order to use it we just have to call it in a terminal. 
+      </p>
+      <p style="font-size:160%;font-weight">
+         You can either call simply for "nikto" or you can call for the help menu directly with the command "nikto -help" as you can see below. 
+      </p>
+      <img src="nikto_help.jpg">
+      <p style="font-size:160%;">
+         In the menu that has just appear you can see the short but enough version of the help menu. You can call the full help menu by "nikto -H".
+      </p>
+      <p style="font-size:160%;">
+         While it has a lot of configuring items, for a normal scan of a target host you just have to set the targeted host by " -host *host* ".
+      </p>
+      <p style="font-size:160%;">
+         Another option that is commonly used is the -output and -Format functions which will allow  you to store the result in a formated file. 
+      <p style="font-size:160%;">
+         Below you can see a full command that asks Nikto to scan Juice Shop and to save the result in a txt formated file.
+      </p>
+      <img src="nikto_command.jpg">
+      <p style="font-size:160%;">
+         After started, Nikto will provide at first the target's IP, the Hostname and the target Port.
+      </p>
+      <p style="font-size:160%;">
+         The next section will contain SSL info and Start Time.  
+      </p>
+      <p style="font-size:160%;">
+         The last section and the longest will contain all the vulnerabilities Nikto can find about the target.  
+      </p>
+      <img src="nikto_run.jpg">
+   </body>
+</html>

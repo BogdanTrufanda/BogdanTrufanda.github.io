@@ -1,70 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>ASET</title>
-		<link rel="stylesheet" type="text/css"  href="../../style/style.css">
-			<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-				<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
-					<link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
-						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-							<meta content="width=device-width, initial-scale=1" name="viewport" />
-							<meta charset="UTF-8">
-							</head>
-							<body>
-								<div class="navbar">
-									<div class="navbar-right">
-										<a href="../../options/tools.html">Tools</a>
-										<a href="../../index.html">Home</a>
-										<a style="color: #7FFF00;" href="w3af.html">W3af</a>
-									</div>
-								</div>
-								<div class="titlu">
-									<center>
-										<h1 style="font-size:260%;">W3af - Intro</h1>
-									</center>
-								</div>
-								<center>
-									<img src="w3af_logo.jpg">
-									</center>
-									<p style="font-size:160%;">
-            w3af is a Web Application Attack and Audit Framework. The project’s goal is to create a framework to help securing web applications by finding and exploiting all web application vulnerabilities. 
-        </p>
-									<p style="font-size:160%;">
-           The framework is proudly developed using Python to be easy to use and extend, and licensed under GPLv2.0.
-        </p>
-                                                                        <p style="font-size:160%;font-weight: bold">
-           Long term objectives
-        </p>
-									<ul style="font-size:140%;">
-										<li>
-           	Create the biggest community of Web Application Hackers.
-</li>
-										<li>
-	        Become the best Web Application Scanner. 
-</li>
-										<li>
-                Become the best Web Application Exploitation Framework. 
-</li>
-										<li>
-	        Combine static code analysis and black box testing into one framework. 
-</li>
-										<li>
-	        Become the nmap for the Web. 
-</li>
-									</ul>
-                                                                        <p style="font-size:160%;font-weight: bold">
-           Short term objectives
-        </p>
-									<ul style="font-size:140%;">
-										<li>
-           	Make the community grow.
-</li>
-										<li>
-	        Become the best Open Source Web Application Scanner. 
-</li>
-										<li>
-                Become the best Open Source Web Application Exploitation Framework. 
-</li>
-									</ul>
-								</body>
-							</html>
+   <head>
+      <title>ASET</title>
+      <link rel="stylesheet" type="text/css"  href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../options/tools.html">Tools</a>
+            <a href="../../index.html">Home</a>
+            <a style="color: #7FFF00;" href="w3af.html">Nikto</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Nikto - Intro</h1>
+         </center>
+      </div>
+      <center>
+         <img src="nikto_logo.jpg">
+      </center>
+      <p style="font-size:160%;">
+         Nikto is an open-source vulnerability scanner, written in Perl and originally released in late 2001, that provides additional vulnerability scanning specific to web servers. It performs checks for 6400 potentially dangerous files and scripts, 1200 outdated server versions, and nearly 300 version-specific problems on web servers. 
+      </p>
+      <p style="font-size:160%;">
+         Nikto is not designed as a stealthy tool. It will test a web server in the quickest time possible, and is obvious in log files or to an IPS/IDS. However, there is support for LibWhisker’s anti-IDS methods in case you want to give it a try (or test your IDS system).
+      </p>
+      <p style="font-size:160%;">
+         Not every check is a security problem, though most are. There are some items that are “info only” type checks that look for things that may not have a security flaw, but the webmaster or security engineer may not know are present on the server. These items are usually marked appropriately in the information printed. There are also some checks for unknown items which have been seen scanned for in log files.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Features:
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            Here are some of the major features of Nikto. See the documentation for a full list of features and how to use them.
+         </li>
+         <li>
+            SSL Support (Unix with OpenSSL or maybe Windows with ActiveState’s Perl/NetSSL).
+         </li>
+         <li>
+            Full HTTP proxy support. 
+         </li>
+         <li>
+            Checks for outdated server components. 
+         </li>
+         <li>
+            Save reports in plain text, XML, HTML, NBE or CSV 
+         </li>
+         <li>
+            Template engine to easily customize reports.
+         </li>
+         <li>
+            Scan multiple ports on a server, or multiple servers via input file (including nmap output).
+         </li>
+         <li>
+            LibWhisker’s IDS encoding techniques. 
+         </li>
+         <li>
+            Easily updated via command line. 
+         </li>
+         <li>
+            Identifies installed software via headers, favicons and files. 
+         </li>
+         <li>
+            Host authentication with Basic and NTLM.
+         </li>
+         <li>
+            Subdomain guessing.
+         </li>
+         <li>
+            Apache and cgiwrap username enumeration. 
+         </li>
+         <li>
+            Mutation techniques to “fish” for content on web servers. 
+         </li>
+         <li>
+            Scan tuning to include or exclude entire classes of vulnerability checks. 
+         </li>
+         <li>
+            Guess credentials for authorization realms (including many default id/pw combos).
+         </li>
+         <li>
+            Authorization guessing handles any directory, not just the root directory.
+         </li>
+         <li>
+            Enhanced false positive reduction via multiple methods: headers,. 
+         </li>
+         <li>
+            page content, and content hashing. 
+         </li>
+         <li>
+            Reports “unusual” headers seen 
+         </li>
+         <li>
+            Interactive status, pause and changes to verbosity settings.
+         </li>
+         <li>
+            Replay saved positive requests.
+         </li>
+         <li>
+            Save full request/response for positive tests. 
+         </li>
+         <li>
+            Maximum execution time per target. 
+         </li>
+         <li>
+            Auto-pause at a specified time 
+         </li>
+         <li>
+            Logging to Metasploit
+         </li>
+         <li>
+            SSL Support (Unix with OpenSSL or maybe Windows with ActiveState’s Perl/NetSSL).
+         </li>
+         <li>
+            Thorough documentation. 
+         </li>
+      </ul>
+   </body>
+</html>
