@@ -1,109 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>ASET</title>
-		<link rel="stylesheet" type="text/css"  href="../../style/style.css">
-			<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-				<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
-					<link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
-						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-							<meta content="width=device-width, initial-scale=1" name="viewport" />
-							<meta charset="UTF-8">
-							</head>
-							<body>
-								<div class="navbar">
-									<div class="navbar-right">
-										<a href="../../options/tools.html">Tools</a>
-										<a href="../../index.html">Home</a>
-										<a style="color: #7FFF00;" href="csrf.html">Cross-site Request Forgery</a>
-									</div>
-								</div>
-								<div class="titlu">
-									<center>
-										<h1 style="font-size:260%;">Cross-site Request Forgery - Intro</h1>
-									</center>
-								</div>
-								<center>
-									<img src="csrf_logo.jpg">
-									</center>
-									<p style="font-size:160%;">
-             Cross-site request forgery (also known as CSRF) is a web security vulnerability that allows an attacker to induce users to perform actions that they do not intend to perform. It allows an attacker to partly circumvent the same origin policy, which is designed to prevent different websites from interfering with each other.  
-        </p>
-									<p style="font-size:160%;font-weight: bold">
-           What is the impact of a CSRF attack?
-        </p>
-									<p style="font-size:160%;">
-            In a successful CSRF attack, the attacker causes the victim user to carry out an action unintentionally. For example, this might be to change the email address on their account, to change their password, or to make a funds transfer. Depending on the nature of the action, the attacker might be able to gain full control over the user's account. If the compromised user has a privileged role within the application, then the attacker might be able to take full control of all the application's data and functionality. 
-        </p>
-									<p style="font-size:160%;font-weight: bold">
-           How does CSRF work?
-        </p>
-									<p style="font-size:160%;">
-            For a CSRF attack to be possible, three key conditions must be in place:  
-        </p>
-									<ul style="font-size:140%;">
-										<li>
-           	A relevant action. There is an action within the application that the attacker has a reason to induce. This might be a privileged action (such as modifying permissions for other users) or any action on user-specific data (such as changing the user's own password).  
-</li>
-										<li>
-	        Cookie-based session handling. Performing the action involves issuing one or more HTTP requests, and the application relies solely on session cookies to identify the user who has made the requests. There is no other mechanism in place for tracking sessions or validating user requests.  
-</li>
-										<li>
-                 No unpredictable request parameters. The requests that perform the action do not contain any parameters whose values the attacker cannot determine or guess. For example, when causing a user to change their password, the function is not vulnerable if an attacker needs to know the value of the existing password.  
-</li>
-									</ul>
-									<p style="font-size:160%;">
-		For example, suppose an application contains a function that lets the user change the email address on their account. When a user performs this action, they make an HTTP request like the following: 
-									</p>
-									<p style="font-size:120%;">
-		"POST /email/change HTTP/1.1				
-									</p>
-									<p style="font-size:120%;">
-		Host: vulnerable-website.com				
-									</p>
-									<p style="font-size:120%;">
-		Content-Type: application/x-www-form-urlencoded				
-									</p>
-									<p style="font-size:120%;">
-		Content-Length: 30				
-									</p>
-									<p style="font-size:120%;">
-		Cookie: session=yvthwsztyeQkAPzeQ5gHgTvlyxHfsAfE				
-									</p>
-									<p style="font-size:120%;">
-		email=wiener@normal-user.com "				
-									</p>
-									<p style="font-size:160%;">
-		 This meets the conditions required for CSRF: 
-									</p>
-									<ul style="font-size:140%;">
-										<li>
-           	 The action of changing the email address on a user's account is of interest to an attacker. Following this action, the attacker will typically be able to trigger a password reset and take full control of the user's account.
-</li>
-										<li>
-	         The application uses a session cookie to identify which user issued the request. There are no other tokens or mechanisms in place to track user sessions.  
-</li>
-										<li>
-                  The attacker can easily determine the values of the request parameters that are needed to perform the action. 
-</li>
-									</ul>
-									<p style="font-size:160%;">
-		 With these conditions in place, the attacker can construct a web page containing the following HTML:  
-									</p>
-									<img src="csrf_1.jpg">
-									<p style="font-size:160%;">
-		  If a victim user visits the attacker's web page, the following will happen: 
-									</p>
-									<ul style="font-size:140%;">
-										<li>
-           	  The attacker's page will trigger an HTTP request to the vulnerable web site.
-</li>
-										<li>
-	          If the user is logged in to the vulnerable web site, their browser will automatically include their session cookie in the request (assuming SameSite cookies are not being used).  
-</li>
-										<li>
-                   The vulnerable web site will process the request in the normal way, treat it as having been made by the victim user, and change their email address. 
-</li>
-									</ul>
-								</body>
-							</html>
+   <head>
+      <title>ASET - Cross-site Request Forgery</title>
+      <link rel="stylesheet" type="text/css"  href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <div class="dropdown">
+               <button class="dropbtn">Attacks</button>
+               <div class="dropdown-content">
+                  <a href="../../attacks/CSRF/csrf.html">Cross-site Request Forgery</a>
+                  <a href="../../attacks/RepetitiveRegistration/rr.html">Repetitive Registration</a>
+               </div>
+            </div>
+            <a style="color: #7FFF00;" href="csrf.html">Cross-site Request Forgery</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Cross-site Request Forgery - Intro</h1>
+         </center>
+      </div>
+      <center>
+         <img src="csrf_logo.jpg">
+      </center>
+      <p style="font-size:160%;">
+         Cross-site request forgery (also known as CSRF) is a web security vulnerability that allows an attacker to induce users to perform actions that they do not intend to perform. It allows an attacker to partly circumvent the same origin policy, which is designed to prevent different websites from interfering with each other.  
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         What is the impact of a CSRF attack?
+      </p>
+      <p style="font-size:160%;">
+         In a successful CSRF attack, the attacker causes the victim user to carry out an action unintentionally. For example, this might be to change the email address on their account, to change their password, or to make a funds transfer. Depending on the nature of the action, the attacker might be able to gain full control over the user's account. If the compromised user has a privileged role within the application, then the attacker might be able to take full control of all the application's data and functionality. 
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         How does CSRF work?
+      </p>
+      <p style="font-size:160%;">
+         For a CSRF attack to be possible, three key conditions must be in place:  
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            A relevant action. There is an action within the application that the attacker has a reason to induce. This might be a privileged action (such as modifying permissions for other users) or any action on user-specific data (such as changing the user's own password).  
+         </li>
+         <li>
+            Cookie-based session handling. Performing the action involves issuing one or more HTTP requests, and the application relies solely on session cookies to identify the user who has made the requests. There is no other mechanism in place for tracking sessions or validating user requests.  
+         </li>
+         <li>
+            No unpredictable request parameters. The requests that perform the action do not contain any parameters whose values the attacker cannot determine or guess. For example, when causing a user to change their password, the function is not vulnerable if an attacker needs to know the value of the existing password.  
+         </li>
+      </ul>
+      <p style="font-size:160%;">
+         For example, suppose an application contains a function that lets the user change the email address on their account. When a user performs this action, they make an HTTP request like the following: 
+      </p>
+      <p style="font-size:120%;">
+         "POST /email/change HTTP/1.1				
+      </p>
+      <p style="font-size:120%;">
+         Host: vulnerable-website.com				
+      </p>
+      <p style="font-size:120%;">
+         Content-Type: application/x-www-form-urlencoded				
+      </p>
+      <p style="font-size:120%;">
+         Content-Length: 30				
+      </p>
+      <p style="font-size:120%;">
+         Cookie: session=yvthwsztyeQkAPzeQ5gHgTvlyxHfsAfE				
+      </p>
+      <p style="font-size:120%;">
+         email=wiener@normal-user.com "				
+      </p>
+      <p style="font-size:160%;">
+         This meets the conditions required for CSRF: 
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            The action of changing the email address on a user's account is of interest to an attacker. Following this action, the attacker will typically be able to trigger a password reset and take full control of the user's account.
+         </li>
+         <li>
+            The application uses a session cookie to identify which user issued the request. There are no other tokens or mechanisms in place to track user sessions.  
+         </li>
+         <li>
+            The attacker can easily determine the values of the request parameters that are needed to perform the action. 
+         </li>
+      </ul>
+      <p style="font-size:160%;">
+         With these conditions in place, the attacker can construct a web page containing the following HTML:  
+      </p>
+      <img src="csrf_1.jpg">
+      <p style="font-size:160%;">
+         If a victim user visits the attacker's web page, the following will happen: 
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            The attacker's page will trigger an HTTP request to the vulnerable web site.
+         </li>
+         <li>
+            If the user is logged in to the vulnerable web site, their browser will automatically include their session cookie in the request (assuming SameSite cookies are not being used).  
+         </li>
+         <li>
+            The vulnerable web site will process the request in the normal way, treat it as having been made by the victim user, and change their email address. 
+         </li>
+      </ul>
+   </body>
+</html>
