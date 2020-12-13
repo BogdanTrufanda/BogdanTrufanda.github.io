@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Payback Time</title>
+      <link rel="stylesheet" type="text/css"  href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" 			rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <div class="dropdown">
+               <button class="dropbtn">Attacks</button>
+               <div class="dropdown-content">
+                  <a href="../../attacks/CSRF/csrf.html">Cross-site Request Forgery</a>
+                  <a href="../../attacks/RepetitiveRegistration/rr.html">Repetitive Registration</a>
+               </div>
+            </div>
+            <a style="color: #7FFF00;" href="paybackTime.html">Payback Time</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Payback Time - Intro</h1>
+         </center>
+      </div>
+      <p style="font-size:160%;">
+         This attack is an Improper Input Validation as Admin Registration but for this one we have to trick somehow the application to owe us some money in the shopping cart.. 
+      </p>
+      <p style="font-size:160%;">
+         What is Improper Input Validation?
+      </p>
+      <p style="font-size:160%;">
+	 When software does not validate input properly, an attacker is able to craft the input in a form that is not expected by the rest of the application. This will lead to parts of the system receiving unintended input, which may result in altered control flow, arbitrary control of a resource, or arbitrary code execution.
+      </p>
+      <p style="font-size:160%;">
+	 In order to successfully perform such an attack we have two main checkpoints to achieve:
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            Login and order something from the shop on more than 1 quantity.
+         </li>
+         <li>
+            Think of the simplest possible implementations to reuse the request for the product we order to perform an unusual request that will make the shop owe us some money. 
+         </li>
+      </ul>
+   </body>
+</html>

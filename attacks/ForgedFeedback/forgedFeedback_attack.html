@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Forged Feedback</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <div class="dropdown">
+               <button class="dropbtn">Attacks</button>
+               <div class="dropdown-content">
+                  <a href="../../attacks/CSRF/csrf.html">Cross-site Request Forgery</a>
+                  <a href="../../attacks/RepetitiveRegistration/rr.html">Repetitive Registration</a>
+               </div>
+            </div>
+            <a style="color: #7FFF00;" href="forgedFeedback.html">Forged Feedback</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Forged Feedback - Attack</h1>
+      </div>
+      <p style="font-size:160%;">
+         The first step to take in order to complete this type of attack is to login with an existing user and post a feedback while monitoring with Burpsuite.
+      </p>
+      <img src="forgedFeedbackImage_1.jpg">
+      <p style="font-size:160%;">
+         As we can see above, we have a POST request with our feedback and other specific fields like userId, captchaId and captchaAnswer. 
+      </p>
+      <p style="font-size:160%;">
+         In this case we can assume that we could change the fields within POST request with another user's email and things are done. 
+      </p>
+      <p style="font-size:160%;">
+         In this case we will get the POST request and send it to Repeater in BurpSuite in order to modify the values of needed fields. As we can see in demo, the user's email is hidden and all we can see is the last letter and the domain of the email adress.In this case we can set an anonymus feedback and so we don't have to match any userID with any userEmail.
+      </p>
+      <img src="adminRegistrationImage_2.jpg">
+      <p style="font-size:160%;">
+         You can see that the POST request is successfull meaning that we have posted an anonymus feedback from our test account.  
+      </p>
+      <p style="font-size:160%;">
+         If we are checking the score board, we will have the challenge successfull.
+      </p>
+      <img src="adminRegistrationImage_3.jpg">
+   </body>
+</html>
