@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASET - Visual Geo Stalcking attack</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <div class="dropdown">
+                <button class="dropbtn">Attacks</button>
+                <div class="dropdown-content">
+                    <a href="../../attacks/all.html">All</a>
+                    <a href="../../attacks/sqlinjection.html">SQL injection</a>
+                    <a href="../../attacks/XSS.html">XSS</a>
+                    <a href="../../attacks/IUV.html">Improper Input Validation</a>
+                </div>
+            </div>
+            <a style="color: #7FFF00;" href="../../attacks/Stalking/stalking.html">Stalking</a>
+        </div>
+    </div>
+
+    <div class="titlu">
+        <h1>Determine the answer to Emma's security question</h1>
+    </div>
+
+    <p>
+        It is also possible to determine where a picture was taken by looking at visual clues within the image. A
+        certain user has
+        uploaded a picture of his old workplace. Take a look at what his security question is and see if you can find
+        the answer
+        by looking at his uploaded image.
+    </p>
+    <ul>
+        <li>Look at visual clues to determine what company is shown in the picture and use that to answer the security
+            question.</li>
+    </ul>
+
+    <p>
+        Steps:
+    </p>
+    <ul>
+
+        <li>Go to the photo wall and search for the photo that has been posted by the user <i>E=ma²</i>.
+        </li>
+        <li>Open the image so that you can zoom in on it.
+        </li>
+        <li>On the far left window on the middle floor, you can see a logo of a company. It can be seen that logo shows
+            the name ITsec.
+        </li>
+        <li>Go to the login page and click on Forgot your password?.
+        </li>
+        <li>Fill in emma@juice-sh.op as the email and ITsec as the answer of the security question.
+        </li>
+        <li>Choose a new password and click on Change.</li>
+
+    </ul>
+
+    <ul class="liste">
+        <li><a href="VisualGeoStalking.mp4" target="_blank">Demo</a></li>
+    </ul>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASET - Stalking attack</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <div class="dropdown">
+                <button class="dropbtn">Attacks</button>
+                <div class="dropdown-content">
+                    <a href="../../attacks/all.html">All</a>
+                    <a href="../../attacks/sqlinjection.html">SQL injection</a>
+                    <a href="../../ttacks/XSS.html">XSS</a>
+                    <a href="../../attacks/IUV.html">Improper Input Validation</a>
+                </div>
+            </div>
+            <a style="color: #7FFF00;" href="../../attacks/Stalking/stalking.html">Stalking</a>
+        </div>
+    </div>
+
+    <div class="titlu">
+        <h1>Exploiting Unrestricted Stalking</h1>
+    </div>
+
+    <ul>
+        <li>1) Credit card encryption:
+            <p>
+                An application encrypts credit card numbers in a database using automatic database encryption. However,
+                this means it also decrypts this data automatically when retrieved, allowing a SQL injection flaw to
+                retrieve credit card numbers in clear text.
+
+                Risk: The system should have encrypted the credit card numbers using a public key, and only allowed
+                back- end applications to decrypt them with the private key.
+            </p>
+        </li>
+        <li>2) SSL is not used for all authenticated pages:
+            <p>Risk: Attacker simply monitors network traffic (like an open wireless network), and steals the user’s
+                session cookie. Attacker then replays this cookie and hijacks the user’s session, accessing the user’s
+                private data.
+            </p>
+        </li>
+        <li>3) The password database uses unsalted hashes to store everyone’s passwords:
+
+            <p>Risk: A file upload flaw allows an attacker to retrieve the password file. All of the unsalted hashes can
+                be exposed with a rainbow table of precalculated hashes.
+            </p>
+        </li>
+    </ul>
+        <p>Prevention Methods (Solutions to be more secure):
+
+            In order to make your personal data more secure, it is very important to follow the folowing
+            recommendations:
+        </p>
+    
+    <ul>
+        <li>
+            Encrypt data during transport and at rest.
+        </li>
+        <li>Minimize data surface area.
+        </li>
+        <li>Use the latest encrytion algorithms.
+        </li>
+        <li>Disable autocomplete on forms that collect data.
+        </li>
+        <li>Disable caching on forms that collect data.
+        </li>
+    </ul>
+</body>
+
+</html>
