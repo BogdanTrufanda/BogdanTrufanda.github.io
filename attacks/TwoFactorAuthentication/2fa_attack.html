@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Two Factor Authentication</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="2fa.html">Two Factor Authentication</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Two Factor Authentication - Attack</h1>
+      </div>
+      <p style="font-size:160%;">
+         The first step to solve this challenge is to perform an SQL injection to login as administrator while monitoring the application with burpsuite. After the login, we need a 'GET /rest/products/search' request to send it to repeater.
+      </p>
+      <img src="2faImage_1.jpg">
+      <p style="font-size:160%;">
+         Once the GET method is sent to Repeater, we will modify the payload to retrive full user credentials list. The payload construction takes time and a lot of tries and failures so in this case we have found the right one after a quick search on Google.
+      </p>
+      <img src="2faImage_2.jpg">
+      <p style="font-size:160%;">
+         Below we can see the successful request with the modified payload and the list with users credentials. Scrolling down the list and searching for wurstbrot we can notice that he is the only one that his deluxePrice field contains a value so we can assume this is his key for Google 2FA.
+      </p>
+      <img src="2faImage_3.jpg">
+      <p style="font-size:160%;">
+         After getting the Google 2FA key we can log out the admin user and try to login wurstbrot's account using again SQL Injection in order to skip the password field.
+      </p>
+      <img src="2faImage_4.jpg">
+      <p style="font-size:160%;">
+         As expected, it requires a 6 digit code from our 2FA app.
+      </p>
+      <img src="2faImage_5.jpg">
+      <p style="font-size:160%;">
+         After seeing the above request of the 6 digit code, we have to install Google 2FA app on an Android device or IOS and set up a manual account and introduce the key we have found on deluxePrice field and so we can retrive a 6 digit code to login the account.
+      </p>
+      <img src="2faImage_6.jpg">
+      <p style="font-size:160%;">
+         Finally, after typing down the 6 digit code we can login wurstbrot's account.
+      </p>
+      <img src="2faImage_7.jpg">
+   </body>
+</html>

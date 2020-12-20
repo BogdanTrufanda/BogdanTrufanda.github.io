@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Product Tampering</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="productTampering.html">Product Tampering</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Product Tampering - Mitigation</h1>
+      </div>
+      <p style="font-size:160%;">
+         As businesses handle large volumes of data on a regular basis, prevention against data tampering has become necessary.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         1. Enforce Encryption for Data-at-Rest and Data-in-Transit
+      </p>
+      <p style="font-size:160%;">
+         Unprotected data, whether at rest or in transit, leaves organizations vulnerable to data tampering and other cyberattacks. One of the most effective ways to protect data-at-rest and -in-transit is encryption.
+      </p>
+      <p style="font-size:160%;">
+         Simply put, data encryption is the process of translating data from one form into another that unauthorized users cannot decrypt.
+      </p>
+      <p style="font-size:160%;">
+         For example, you store your customers’ credit card details in a database, so by encrypting data-at-rest, you are essentially converting your customers’ sensitive data into an encrypted format that cannot be decoded or read without a decryption key.
+      </p>
+      <p style="font-size:160%;">
+         To protect data-at-rest, you can simply encrypt sensitive data prior to storing it or encrypt the storage drive itself. For encrypting data in transit, you can use encrypted connections such as SSL, TLS, HTTPS, FTPS, etc.
+      </p>
+      <p style="font-size:160%;">
+         To further strengthen your data encryption, assign role-based controls to ensure only authorized users have access to the encrypted data. Additionally, you can also implement multi-factor authentication to increase security. 
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         2. Copy-on-Write File Systems
+      </p>
+      <p style="font-size:160%;">
+         Copy-on-write, often referred to as COW, is a concept used to maintain instant snapshots on database servers. It can also help with data tampering prevention.
+      </p>
+      <p style="font-size:160%;">
+         Each time a database is modified, delta snapshots are taken. Security teams can detect data tampering by monitoring snapshots and checking for unexpected file system snapshots.
+      </p>
+      <p style="font-size:160%;">
+         Many database applications and operating systems (such as Linux, Unix) come with a built-in snapshot feature. This makes it easy for enterprises to integrate COW or any other similar technology and stay updated about their database modifications.
+      </p>
+      <p style="font-size:160%;">
+         COW also helps protect data against potential cyberattacks such as ransomware based encryption attacks. Thus, it becomes easier to restore the file system to a pre-attack state with data in its original state, retrieve lost data, and eliminate any downtime.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         3. Data Integrity using HMACs
+      </p>
+      <p style="font-size:160%;">
+         Hash-based message authentication code (HMAC) is a type of message authentication code (MAC) that consists of a cryptographic hash function and a secret cryptographic key.
+      </p>
+      <p style="font-size:160%;">
+         Basically, an HMAC is a way of signing a message/file so that if the data is tampered with, it is very easy to detect and then you know not to trust the tampered data.
+      </p>
+      <p style="font-size:160%;">
+         When two or more parties exchange data through secure file transfer protocols, the data is accompanied by HMACs instead of just plain hashes. This technology consists of a shared secret key and a hash function.
+      </p>
+      <p style="font-size:160%;">
+         A hash is taken of the message and that is then signed by the shared key. A shared secret key helps exchanging parties ensure the authenticity of the data. Thus, providing a way to verify whether the data and HMAC they receive is really from the authorized, expected sender and the message has not been altered.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         4. File Integrity Monitoring (FIM)
+      </p>
+      <p style="font-size:160%;">
+         File integrity monitoring is a powerful security technique to secure business data and IT infrastructure against both known and unknown threats. FIM is the process of monitoring files to check if any changes have been made.
+      </p>
+      <p style="font-size:160%;">
+         It assesses system files and generates a cryptographic checksum as a baseline. Then, the FIM repeatedly recalculates the checksum of the same resources, compares it to the baseline, and if it detects changes, it generates a security alert.
+      </p>
+      <p style="font-size:160%;">
+         FIM systems typically monitor user credentials, privileges, identities, operating systems, configuration files, application files, and encryption key stores.
+      </p>
+      <p style="font-size:160%;">
+         FIM systems are resource-intensive, especially while dealing with large amounts of data and those that change frequently. That said, it’s crucial to monitor files that are more vulnerable to cyberattacks or are confidential so that you invest your resources efficiently.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         5. WORM systems (Write Once Read Many)
+      </p>
+      <p style="font-size:160%;">
+         Write once read many (WORM) systems refers to a storage technology where data, once written, cannot be overwritten or modified. This technology has long been used for archival purposes of large enterprises and government agencies.
+      </p>
+      <p style="font-size:160%;">
+         WORM systems offer a long-term storage strategy that ensures users cannot accidentally or intentionally erase or modify data. This technology provides virtual protection against erasure of data.
+      </p>
+      <p style="font-size:160%;">
+         Compromising data on WORM systems is difficult at best, but still possible if an expert with a high degree of technical knowledge has unrestricted access to the deepest levels of the operating system and gains access to the WORM drives.
+      </p>
+      <p style="font-size:160%;">
+         To ensure your WORM systems are well-protected, implement user access controls such as least privilege models that give users access to only what they need in order to perform their jobs.
+      </p>
+      
+
+   </body>
+</html>

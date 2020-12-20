@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Forged Review</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="forgedReview.html">Forged Review</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Forged Review - Attack</h1>
+      </div>
+      <p style="font-size:160%;">
+         The first step to take in order to complete this type of attack is to login with an existing user and post a review while monitoring with Burpsuite.
+      </p>
+      <img src="forgedReviewImage_1.jpg">
+      <p style="font-size:160%;">
+         As we can see above, we have a PUT request with our review and our email. 
+      </p>
+      <p style="font-size:160%;">
+         In this case we can assume that we could change the fields within PUT request with another user's email and review. 
+      </p>
+      <p style="font-size:160%;">
+         In this case we will get the PUT request and send it to Repeater in BurpSuite in order to modify the values of the fields.
+      </p>
+      <img src="forgedReviewImage_2.jpg">
+      <p style="font-size:160%;">
+         You can see that the PUT request is successfull meaning that we have posted a review in with someone's email as author without having access to that email.  
+      </p>
+      <p style="font-size:160%;">
+         If we are checking the reviews of that product, we can see our false review.
+      </p>
+      <img src="forgedReviewImage_3.jpg">
+   </body>
+</html>

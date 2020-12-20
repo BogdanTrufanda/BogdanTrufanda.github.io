@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Expired Coupon</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="expiredCoupon.html">Expired Coupon</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Expired Coupon - Attack</h1>
+      </div>
+      <p style="font-size:160%;">
+         In order to solve the Expired Coupon challenge we need to redeem an expired coupon from previous campaigns. The golden word here is campaign so we are going to take a look at the coupon redeem page by inspecting the element and go to Debugger tab. Furthermore we will search for campaign word in the main-es2018.js file.
+      </p>
+      <img src="expiredCouponImage_1.jpg">
+      <p style="font-size:160%;">
+         As we can see, by searching for the word campaign, we have found a method called this.campain which contains more campaigns codes and because we need to redeem an expired one, our target will be the 2019 coupon. We write it down in the redeem field of the checkout form and we can see that the coupon is invalid and the debugger gets us to a method called applyCoupon().
+      </p>
+      <img src="expiredCouponImage_2.jpg">
+      <p style="font-size:160%;">
+         As we can see above, the applyCoupon method has a few lines of code which we will inspect. First we will take 'this.campaignCoupon' and set it as an watch expression and of course we will have a break point marked on the 1st line once the method was declared. 
+      </p>
+      <img src="expiredCouponImage_3.jpg">
+      <p style="font-size:160%;">
+         After setting the watch expression the debugger will stop so we have to press F10 or to click on step over button. We can see that the variable 'this.campaignCoupon' takes the string of the coupon we have introduced on the shop. Moving forward to the next line, we have another variable called 'this.clientDate' so we will add it as an watch expression to see the value it takes.
+      </p>
+      <img src="expiredCouponImage_4.jpg">
+      <p style="font-size:160%;">
+         We can notice the value of the 'this.clientDate' as the actual date and time of our system. Next in line for watch expressions will be the constant t which I belive it is used to calculate the date and time of the client by removing the offset given by time zone. So we add it and see what value it takes.
+      </p>
+      <img src="expiredCouponImage_5.jpg">
+      <p style="font-size:160%;">
+         The last variable to watch is 'e.validOn' and it seems that it is contained by a conditional (ternary) operator which allow us to use three operands and an expression to execute if the condition is false.
+      </p>
+      <img src="expiredCouponImage_6.jpg">
+      <p style="font-size:160%;">
+         Above we can see the value of the 'e.validOn' to be the same datestamp like the one from the campaign coupon we have tried to use.
+      </p>
+      <p style="font-size:160%;">
+         As a final result, it seems that the campaign coupons are conditioned by the date and time of the client and there is a validation that is being made when trying to redeem one.
+      </p>
+      <p style="font-size:160%;">
+         Next we will change the date and time of our system in order to match the datestamp we have found and see if we can redeem the already expired coupon.
+      </p>
+      <img src="expiredCouponImage_7.jpg">
+      <p style="font-size:160%;">
+         Success, we have redeemed the targeted coupon and even better, we have redeemed an expired coupon.
+      </p>
+   </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Expired Coupon</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../options/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="expiredCoupon.html">Expired Coupon</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Expired Coupon - Mitigation</h1>
+      </div>
+      <p style="font-size:160%;">
+         Input validation is performed to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.
+      </p>
+      <p style="font-size:160%;">
+         Data from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data. 
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Input validation strategies
+      </p>
+      <p style="font-size:160%;">
+         Input validation should be applied on both syntactical and Semantic level. 
+      </p>
+      <p style="font-size:160%;">
+         Syntactic validation should enforce correct syntax of structured fields (e.g. SSN, date, currency symbol).
+      </p>
+      <p style="font-size:160%;">
+         Semantic validation should enforce correctness of their values in the specific business context (e.g. start date is before end date, price is within expected range).  
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Implementing input validation
+      </p>
+      <p style="font-size:160%;">
+         Input validation can be implemented using any programming technique that allows effective enforcement of syntactic and semantic correctness, for example:
+      </p>
+      <ul style="font-size:140%;">
+	<li>
+	Data type validators available natively in web application frameworks (such as Django Validators, Apache Commons Validators etc).  
+	</li>
+	<li>
+	Validation against JSON Schema and XML Schema (XSD) for input in these formats.  
+	</li>
+	<li>
+        Type conversion (e.g. Integer.parseInt() in Java, int() in Python) with strict exception handling.  
+	</li>
+	<li>
+	Minimum and maximum value range check for numerical parameters and dates, minimum and maximum length check for strings.  
+	</li>
+	<li>
+	Array of allowed values for small sets of string parameters (e.g. days of week).  
+	</li>
+        <li>
+	Regular expressions for any other structured data covering the whole input string (^...$) and not using "any character" wildcard (such as . or \S)  
+	</li>
+      </ul>
+      <p style="font-size:160%;font-weight: bold">
+         Whitelisting vs blacklisting
+      </p>
+      <p style="font-size:160%;">
+         It is a common mistake to use black list validation in order to try to detect possibly dangerous characters and patterns like the apostrophe ' character, the string 1=1, or the <script> tag, but this is a massively flawed approach as it is trivial for an attacker to bypass such filters. 
+      </p>
+      <p style="font-size:160%;">
+         White list validation is appropriate for all input fields provided by the user. White list validation involves defining exactly what IS authorized, and by definition, everything else is not authorized.
+      </p>
+      <p style="font-size:160%;">
+         If it's well structured data, like dates, social security numbers, zip codes, email addresses, etc. then the developer should be able to define a very strong validation pattern, usually based on regular expressions, for validating such input.  
+      </p>
+      <p style="font-size:160%;">
+         If the input field comes from a fixed set of options, like a drop down list or radio buttons, then the input needs to match exactly one of the values offered to the user in the first place.  
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Validating free-form Unicode text
+      </p>
+      <p style="font-size:160%;">
+         Free-form text, especially with Unicode characters, is perceived as difficult to validate due to a relatively large space of characters that need to be whitelisted.
+      </p>
+      <p style="font-size:160%;">
+         The primary means of input validation for free-form text input should be:
+      </p>
+      <ul style="font-size:140%;">
+	<li>
+	Normalization: Ensure canonical encoding is used across all the text and no invalid characters are present.  
+	</li>
+	<li>
+	Character category whitelisting: Unicode allows whitelisting categories such as "decimal digits" or "letters" which not only covers the Latin alphabet but also various other scripts used globally (e.g. Arabic, Cyrillic, CJK ideographs etc).  
+	</li>
+	<li>
+        Individual character whitelisting: If you allow letters and ideographs in names and also want to allow apostrophe ' for Irish names, but don't want to allow the whole punctuation category.  
+	</li>
+      </ul>
+   </body>
+</html>

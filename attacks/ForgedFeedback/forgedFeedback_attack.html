@@ -15,13 +15,7 @@
          <div class="navbar-right">
             <a href="../../index.html">Home</a>
             <a href="../../options/tools.html">Tools</a>
-            <div class="dropdown">
-               <button class="dropbtn">Attacks</button>
-               <div class="dropdown-content">
-                  <a href="../../attacks/CSRF/csrf.html">Cross-site Request Forgery</a>
-                  <a href="../../attacks/RepetitiveRegistration/rr.html">Repetitive Registration</a>
-               </div>
-            </div>
+            <a href="../../attacks/all.html">Attacks</a>
             <a style="color: #7FFF00;" href="forgedFeedback.html">Forged Feedback</a>
          </div>
       </div>
@@ -41,13 +35,13 @@
       <p style="font-size:160%;">
          In this case we will get the POST request and send it to Repeater in BurpSuite in order to modify the values of needed fields. As we can see in demo, the user's email is hidden and all we can see is the last letter and the domain of the email adress.In this case we can set an anonymus feedback and so we don't have to match any userID with any userEmail.
       </p>
-      <img src="adminRegistrationImage_2.jpg">
+      <img src="forgedFeedbackImage_2.jpg">
       <p style="font-size:160%;">
          You can see that the POST request is successfull meaning that we have posted an anonymus feedback from our test account.  
       </p>
       <p style="font-size:160%;">
          If we are checking the score board, we will have the challenge successfull.
       </p>
-      <img src="adminRegistrationImage_3.jpg">
+      <img src="forgedFeedbackImage_3.jpg">
    </body>
 </html>
