@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ASET - About File Upload</title>
+  <link rel="stylesheet" type="text/css" href="../../style/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="navbar-right">
+      <a href="../../index.html">Home</a>
+      <a href="../../tools/tools.html">Tools</a>
+      <a style="color: #7FFF00;" href="../../attacks/Upload/upload.html">File Upload</a>
+    </div>
+  </div>
+
+  <div class="titlu">
+    <h1>FIle Upload</h1>
+  </div>
+  <p>
+    Uploaded files represent a significant risk to applications. The first step in many attacks is to get some code to
+    the system to be attacked. Then the attack only needs to find a way to get the code executed. Using a file upload
+    helps the attacker accomplish the first step.
+
+    The consequences of unrestricted file upload can vary, including complete system takeover, an overloaded file system
+    or database, forwarding attacks to back-end systems, client-side attacks, or simple defacement. It depends on what
+    the application does with the uploaded file and especially where it is stored.
+  </p>
+
+  <p>
+    There are really two classes of problems here. The first is with the file metadata, like the path and file name.
+    These are generally provided by the transport, such as HTTP multi-part encoding. This data may trick the application
+    into overwriting a critical file or storing the file in a bad location. You must validate the metadata extremely
+    carefully before using it.
+
+    The other class of problem is with the file size or content. The range of problems here depends entirely on what the
+    file is used for.
+  </p>
+</body>
+</html>

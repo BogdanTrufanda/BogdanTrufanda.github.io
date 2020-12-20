@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>ASET</title>
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+
+
+
+        <div class="navbar">
+            <div class="navbar-right">
+              <a style="color: #7FFF00;" href="rshells.html">RS</a>
+                <a href="../index.html">Home</a>
+
+            </div>
+        </div>
+
+        <div class="titlu">
+            <h1>Reverse shells listeners and File uploads</h1>
+        </div>
+        <br>
+        <div class="titlu">
+            <h3>Reverse shells</h3>
+        </div>
+        <p>A reverse shell is a shell session established on a connection that is initiated from a remote machine, not from the local host. Attackers who successfully exploit a remote command execution vulnerability can use a reverse shell to obtain an interactive shell session on the target machine and continue their attack.</p>
+
+        <div class="titlu">
+            <h3>File Extension Filtering</h3>
+        </div>
+            
+      <p>There are countless uses for file uploads in the modern internet -- profile pictures, school/university submissions, diagrams, family pictures etc. Whilst file uploads are very common, they're also very easy to implement in an insecure fashion. For this reason, it's important that we understand the gravity of the attack vector.
+
+        When you have the ability to upload files to a server, you have a path straight to RCE (Remote Command Execution).</p>
+        <p> An upload form with no restrictions would mean that you could upload a script that, when executed, connects back to your attacking machine and gives you the ability to run any command you want. It would be very unusual to find a file upload with no filtering; but it's much less uncommon to find a file upload that employs flawed filtering techniques which can be circumvented to upload a malicious script. The script has to be written in a language which the server can execute. PHP is usually a good choice for this, as most websites are still written with a PHP back end.
+        
+        </p>   
+
+            <p>
+            As the name suggests extension filtering checks the file extension of uploaded files. This is often done by specifying a list of allowed extensions, then checking the uploaded file against the list. If the extension is not in the allowlist, the upload is rejected.
+            So, what's the bypass? Well, the answer is that it depends entirely on how the filter is implemented. Many extension filters split a filename at the dot (.) and check what comes after it against the list. This makes it very easy to bypass by uploading a double-barrelled extension (e.g. .jpg.php). The filter splits at the dot(s), then checks what it thinks is the extension against the list. If jpg is an allowed extension then the upload will succeed and our malicious PHP script will be uploaded to the server.
+            </p>
+        <p>When implementing an upload system, it's good practice to upload the files to a directory that can't be accessed remotely. Unfortunately, this is often not the case, and scripts are uploaded to a subdirectory on the webserver (often something like /uploads, /images, /media, or /resources). For example, we might be able to find the uploaded script at https://www.thebestfestivalcompany.xyz/images/shell.jpg.php.</p>
+        <div class="titlu">
+            <h3>How to Prevent File Upload Vulnerabilities: Best Practices</h3>
+        </div>
+            
+              <ul><li>            1. File type verification
+            </li></ul>     
+            <p>    
+            File types are usually defined by their file extensions. Each file type usually has several corresponding file extensions. The file extensions enable the operating system and users to easily identify the type of file.
+            
+            Attackers can bypass security systems and spoof operating systems and users by changing file extensions. For example, hackers can rename a malicious .exe file into a legitimate-looking .docx file. To prevent this, you must verify the file type before allowing upload.
+            </p>
+            <ul><li>                  2. Restrict specific file extensions
+            </li></ul>  
+      
+            <p>
+            A whitelist provides system access only to administrator-approved programs, IPs and email addresses. Creating a white list of allowed files enables you to avoid uploads of potentially malicious content to your site. The white list can include executables, scripts and any other file type.
+        </p>
+        <ul><li>            3. Malware prevention
+        </li></ul>  
+            
+            <p>
+            Websites that insert or parse data from uploaded files may be vulnerable to malware attacks. To prevent malware, you should scan all uploaded files with multiple anti-malware tools. Each tool uses different algorithms and specializes in different categories.
+        </p>
+        <ul><li>            4. Remove embedded threats
+        </li></ul>  
+            
+            <p>
+            Anti-malware tools don’t always detect embedded threats in PDFs, MS Office and image files. For example, attackers use digital watermarking techniques to embed malicious code inside an image or video file. Make sure to remove any possible embedded objects from your uploaded files.
+        </p>
+        <ul><li>             5. User authentication
+        </li></ul>  
+           
+            <p>
+            User authentication methods validate the identity of the person requesting private information. Implement robust user authentication protocols like Two-factor authentication (2FA).
+            
+            Two-factor authentication is a two-step authentication process. The process combines a password and username with a physical or mobile token for extra security. The sequence of authentication factors makes it more difficult for a potential intruder to gain access.
+        </p>
+        <ul><li>            6. Store files in an external directory
+        </li></ul>  
+            
+            <p> 
+            Upload files to external directories and store them outside the webroot. This technique prevents attackers from executing malicious files through a website URL.
+        </p>
+        <ul><li>            7. Simple error messages
+        </li></ul>  
+            
+            <p>
+            Error messages sometimes use server configuration settings or directory paths to give more information to the user. However, cybercriminals can use the information from error messages to exploit vulnerabilities in uploaded files. For this reason, you should make the error message as simple as possible.</p>
+        </p>
+    </body>
+    
+
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASET - CAPTCHA Bypass attack</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a style="color: #7FFF00;" href="../../attacks/Bypass/bypass.html">Bypass</a>
+        </div>
+    </div>
+
+    <div class="titlu">
+        <h1>Submit 10 or more customer feedbacks <br> within 10 seconds</h1>
+    </div>
+    <br> <br>
+    <p>
+        The Contact Us form for customer feedback contains a CAPTCHA to protect it from being abused through scripting.
+        This challenge is about beating this automation protection.
+    </p>
+    <ul>
+        <li>You could prepare 10 browser tabs, solving every CAPTCHA and filling out the each feedback form. Then you'd
+            need to very quickly switch through the tabs and submit the forms in under 10 seconds total.</li>
+        <li>Should the Juice Shop ever decide to change the challenge into "Submit 100 or more customer feedbacks within
+            60 seconds" or worse, you'd probably have a hard time keeping up with any tab-switching approach.</li>
+        <li>Investigate closely how the CAPTCHA mechanism works and try to find either a bypass or some automated way of
+            solving it dynamically.</li>
+        <li>Wrap this into a script (in whatever programming language you prefer) that repeats this 10 times.</li>
+    </ul>
+    <p>
+        Steps:
+    </p>
+    <ul>
+
+        <li>Open the Network tab of your browser DevTools and visit http://aset2020.herokuapp.com/#/contact
+        </li>
+        <li>You should notice a GET request to http://aset2020.herokuapp.com/rest/captcha/ which retrieves the CAPTCHA for the
+            feedback form. The HTTP response body will look similar to
+            {"captchaId":18,"captcha":"5*8*8","answer":"320"}.
+        </li>
+        <li>Fill out the form normally and submit it while checking the backend interaction in your Developer Tools. The
+            CAPTCHA identifier and solution are transmitted along with the feedback in the request body: {comment:
+            "Hello", rating: 1, captcha: "320", captchaId: 18}
+        </li>
+        <li>You will notice that a new CAPTCHA is retrieved from the REST endpoint. It will present a different math
+            challenge, e.g. {"captchaId":19,"captcha":"1*1-1","answer":"0"}
+        </li>
+        <li>Write another feedback but before sending it, change the captchaId and captcha parameters to the previous
+            values of captchaId and answer. In this example you would submit captcha: "320", captchaId: 18 instead of
+            captcha: "0", captchaId: 19.
+        </li>
+        <li>The server will accept your feedback, telling your that the CAPTCHA can be pinned to any previous one you
+            like.
+        </li>
+        <li>Write a script with a 10-iteration loop that submits feedback using your pinned captchaId and captcha
+            parameters. Running this script will solve the challenge.
+        </li>
+    </ul>
+
+    <ul class="liste">
+        <li><a href="CaptchaBypass.mp4" target="_blank">Demo</a></li>
+    </ul>
+
+</body>
+
+</html>

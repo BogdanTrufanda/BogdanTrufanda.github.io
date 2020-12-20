@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>ASET</title>
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+
+
+
+        <div class="navbar">
+            <div class="navbar-right">
+              <a style="color: #7FFF00;" href="jwt.html">JWT</a>
+                <a href="../index.html">Home</a>    
+            </div>
+        </div>
+
+        <div class="titlu">
+            <h1>JWT - Info</h1>
+        </div>
+        <p>
+            JSON Web Token (JWT) is an Internet standard for creating data with optional signature and/or optional encryption whose payload holds JSON that asserts some number of claims. The tokens are signed either using a private secret or a public/private key. For example, a server could generate a token that has the claim "logged in as admin" and provide that to a client. The client could then use that token to prove that it is logged in as admin. The tokens can be signed by one party's private key (usually the server's) so that party can subsequently verify the token is legitimate. If the other party, by some suitable and trustworthy means, is in possession of the corresponding public key, they too are able to verify the token's legitimacy.
+
+            JWT relies on other JSON-based standards: JSON Web Signature and JSON Web Encryption.
+            </p>
+            <table>
+                <tr>
+                  <th>Header</th>
+                  <th>Payload</th>
+                  <th>Signature</th>
+                </tr>
+                <tr>
+                  <td>{
+                    "alg": "HS256",
+                    "typ": "JWT"
+                  }</td>
+                  <td>{
+                    "loggedInAs": "admin",
+                    "iat": 1422779638
+                  }</td>
+                  <td>HMAC-SHA256(
+                    secret,
+                    base64urlEncoding(header) + '.' +
+                    base64urlEncoding(payload)
+                  )</td>
+                </tr>
+                <tr>
+                  <td>Identifies which algorithm is used to generate the signature
+                    HS256 indicates that this token is signed using HMAC-SHA256.
+                    
+                    Typical cryptographic algorithms used are HMAC with SHA-256 (HS256) and RSA signature with SHA-256 (RS256). </td>
+                  <td>Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
+                    This example has the standard Issued At Time claim (iat) and a custom claim (loggedInAs).</td>
+                  <td>Securely validates the token. The signature is calculated by encoding the header and payload using Base64url Encoding and concatenating the two together with a period separator. That string is then run through the cryptographic algorithm specified in the header, in this case HMAC-SHA256. The Base64url Encoding is similar to base64, but uses different non-alphanumeric characters and omits padding.</td>
+                </tr>
+              </table>
+
+              <ul>
+
+                <li>The three parts are encoded separately using Base64url Encoding, and concatenated using periods to produce the JWT:
+
+                </li>
+                
+                <li>const token = base64urlEncoding(header) + '.' + base64urlEncoding(payload) + '.' + base64urlEncoding(signature)
+                </li>
+                <li>The above data and the secret of "secretkey" creates the token:</li>                
+                <li>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dnZWRJbkFzIjoiYWRtaW4iLCJpYXQiOjE0MjI3Nzk2Mzh9.gzSraSYS8EXBxLN_oWnFSRgCzcmJmMjLiuyu5CSpyHI</li>
+            </ul>
+    </body>
+    
+
+</html>
+

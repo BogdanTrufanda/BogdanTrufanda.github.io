@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASET - Upload Size attack</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a style="color: #7FFF00;" href="../../attacks/Upload/upload.html">File Upload</a>
+        </div>
+    </div>
+
+    <div class="titlu">
+        <h1>Upload a file larger than 100 kB</h1>
+    </div>
+
+    <p>
+        The client-side validation prevents uploads larger than 100 kB.
+
+        The Juice Shop offers its customers the chance to complain about an order that left them unsatisfied. One of the
+        juice bottles might have leaked during transport or maybe the shipment was just two weeks late. To prove their
+        claim, customers are supposed to attach their order confirmation document to the online complaint. To prevent
+        abuse of this functionality, the application only allows file uploads of 100 kB or less.
+
+        First you should try to understand how the file upload is actually handled on the client and server side
+        With this understanding you need to find a "weak spot" in the right place and have to craft an exploit for it
+
+
+    </p>
+    <ul>
+        <li>Craft a POST request to https://juice-shop.herokuapp.com/file-upload with a form parameter file that contains a PDF
+            file of more than 100 kB but less than 200 kB. </li>
+        <li>The response from the server will be a 204 with no content, but the challenge will be successfully solved.</li>
+        <li>Files larger than 200 kB are rejected by an upload size check on server side with a 500 error stating Error:
+            File too large.</li>
+    </ul>
+    <ul class="liste">
+        <li><a href="uploadSize.mp4" target="_blank">Demo</a></li>
+    </ul>
+
+</body>
+
+</html>

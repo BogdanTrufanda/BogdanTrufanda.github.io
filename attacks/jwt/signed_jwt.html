@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>ASET</title>
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+
+
+
+        <div class="navbar">
+            <div class="navbar-right">
+              <a style="color: #7FFF00;" href="jwt.html">JWT</a>
+                <a href="../index.html">Home</a>
+            </div>
+        </div>
+
+        <div class="titlu">
+            <h1>Forge an almost properly RSA-signed JWT token</h1>
+        </div>
+      
+        <p>
+            Forge an almost properly RSA-signed JWT token that impersonates the (non-existing) user rsa_lord@juice-sh.op. Getting your hands on the public RSA key the application employs for its JWTs is mandatory for this challenge.
+        
+           </p>
+           <ul>
+           <li>
+            Use a brute-forcing directory browsing tool to identify http://localhost:3000/encryptionkeys as having directory listing enabled.  </li>
+            <li>Download the application's public JWT key from http://localhost:3000/encryptionkeys/jwt.pub.</li>
+            <li>In the BApp Store tab under the Extender tab within Burp Suite find and install the JSON Web Token Attacker extension (aka JOSEPH)b</li>
+            <li>Send any captured request that has an Authorization: Bearer token to Burp's Repeater.</li>
+            <li>Once in Repeater, click the JWS tab, then the Payload tab beneath and modify the email parameter to be rsa_lord@juice-sh.op</li>
+            <li>Next, click the Attacker tab, select Key Confusion, then click Load.</li>
+<li>Paste in the contents of the jwt.pub file without the -----BEGIN RSA PUBLIC KEY----- and -----END RSA PUBLIC KEY----- lines.</li>          
+<li>Upload the new changes, and then send the forged request.</li>
+</ul>
+          <ul class="liste">
+              <li><a href="ujwt.mp4" target="_blank">Demo</a></li>
+            </ul>  
+          </body>
+          
+    
+
+</html>
+

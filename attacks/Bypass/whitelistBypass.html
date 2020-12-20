@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASET - Whitelist Bypass attack</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a style="color: #7FFF00;" href="../../attacks/Bypass/bypass.html">Bypass</a>
+        </div>
+    </div>
+
+    <div class="titlu">
+        <h1>Enforce a redirect to a page <br> you are not supposed to redirect to</h1>
+    </div>
+    <br>
+    <br>
+    <p>
+        This challenge is about redirecting to an entirely disallowed different location.
+    </p>
+    <ul>
+        <li>This challenge is about redirecting to an entirely disallowed different location.</li>
+        <li>The application will only allow you to redirect to whitelisted URLs.</li>
+        <li>Tampering with the redirect mechanism might give you some valuable information about how it works under to
+            hood</li>
+    </ul>
+    <p>
+        Steps:
+    </p>
+    <ul>
+        <li>Pick one of the redirect links in the application, e.g.
+            http://aset2020.herokuapp.com/redirect?to=https://github.com/bkimminich/juice-shop from the GitHub-button in
+            the
+            navigation bar.</li>
+        <li>Trying to redirect to some unrecognized URL fails due to allowlist validation with 406 Error: Unrecognized
+            target URL for redirect.</li>
+        <li>Removing the to parameter (http://aset2020.herokuapp.com/redirect) will instead yield a 500 TypeError:
+            Cannot read
+            property 'indexOf' of undefined where the indexOf indicates a severe flaw in the way the allowlist works.
+        </li>
+        <li>Craft a redirect URL so that the target-URL in to comes with an own parameter containing a URL from the
+            allowlist, e.g.
+            http://aset2020.herokuapp.com/redirect?to=http://kimminich.de?pwned=https://github.com/bkimminich/juice-shop
+        </li>
+    </ul>
+
+    <ul class="liste">
+        <li><a href="uploadType.mp4" target="_blank">Demo</a></li>
+    </ul>
+
+</body>
+
+</html>

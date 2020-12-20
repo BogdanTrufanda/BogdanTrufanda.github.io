@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>ASET</title>
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+
+
+
+        <div class="navbar">
+            <div class="navbar-right">
+              <a style="color: #7FFF00;" href="race_condition.html">RC</a>
+                <a href="../index.html">Home</a>
+      
+
+            </div>
+        </div>
+
+        <div class="titlu">
+            <h1>What Is a Race Condition Vulnerability?</h1>
+        </div>
+        <p>
+
+A race condition attack happens when a computing system that’s designed to handle tasks in a specific sequence is forced to perform two or more operations simultaneously. This technique takes advantage of a time gap between the moment a service is initiated and the moment a security control takes effect. This attack, which depends on multithreaded applications, can be delivered in one of two ways: interference caused by untrusted processes (essentially a piece of code that slips into a sequence between steps of a secure programs), and interference caused by a trusted process, which may have the "same'' privileges. Without proper controls, different processes can interfere with each other. Other names used to refer to this vulnerability include Time of Check/Time of Use or TOC/TOU attacks.
+         </p>
+         <p>Web applications, file systems, and networking environments are all vulnerable to a race condition attack. Attackers might target an access control list (ACL), a payroll or human resources database, a transactional system, a financial ledger, or some other data repository. Although race condition attacks don’t happen frequently — because they’re relatively difficult to engineer and attackers must exploit a very brief window of opportunity — when they do happen, they can lead to serious repercussions, including a system granting unauthorized privileges. What’s more, race condition attacks are inherently difficult to detect.</p>
+
+         <ul>
+             <li>A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any time, you don't know the order in which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are "racing" to access/change the data.
+                
+                Problems often occur when one thread does a "check-then-act" (e.g. "check" if the value is X, then "act" to do something that depends on the value being X) and another thread does something to the value in between the "check" and the "act". E.g:</li>
+         </ul>
+         <pre>if (x == 5) // The "Check"
+{
+   y = x * 2; // The "Act"
+
+   // If another thread changed x in between "if (x == 5)" and "y = x * 2" above,
+   // y will not be equal to 10.
+}</pre>
+<p>Mitigation</p>
+<p>The point being, y could be 10, or it could be anything, depending on whether another thread changed x in between the check and act. You have no real way of knowing.
+
+    In order to prevent race conditions from occurring, you would typically put a lock around the shared data to ensure only one thread can access the data at a time. This would mean something like this:</p>
+    <pre>// Obtain lock for x
+        if (x == 5)
+        {
+           y = x * 2; // Now, nothing can change x until the lock is released. 
+                      // Therefore y = 10
+        }
+        // release lock for x</pre>
+    </body>
+    
+
+</html>
+

@@ -13,7 +13,21 @@
   font-family: 'Francois One';
  
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: auto;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr{
+  background-color: white;
+}
 .dropdown {
   background-color:transparent; 
   position: relative;
@@ -94,6 +108,18 @@ p{
   color:white;
   font-family: Helvetica, Arial, sans-serif;
 }
+pre{
+  text-align: justify;
+  text-indent: 50px;
+  text-justify: inter-word;
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 5px;
+font-size: 1.5rem;
+color:white;
+font-family: Helvetica, Arial, sans-serif;
+}
 ul{
   padding-left: 130px;
   padding-right: 130px;
@@ -109,9 +135,10 @@ img {
     display: block;
     margin-left: auto;
     padding-top: 80px;
+    padding-left: 200px;
     margin-right: auto;
-    width: 30%;
-    height: 30%;
+    width: 300px;
+    height: 300px;
   }
 /*-------------------------------------*/
 /*Navbar*/

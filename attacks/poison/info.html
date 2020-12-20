@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>ASET</title>
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+
+
+
+        <div class="navbar">
+            <div class="navbar-right">
+              <a style="color: #7FFF00;" href="poison.html">PNB</a>
+                <a href="../index.html">Home</a>      
+
+            </div>
+        </div>
+
+        <div class="titlu">
+            <h1>How 'poison' works</h1>
+        </div>
+        <p>
+          The Poison Null Byte aka The Poisoned NUL Byte was originally dubbed as such by Olaf Kirch in a post in the fa.linux.security news group. A null byte in many languages is used to detect the end of a string. As opposed to storing an integer value in the first byte or two of the string stating the total length. A null byte on the other hand would just be placed at the end of the string. By embedding NULL Bytes/characters into applications that do not handle postfix NULL terminators properly, an attacker can exploit a system using techniques such as directory traversal.
+
+The Poison Null Byte exploit takes advantage strings with a known length that can contain null bytes, and whether or not the API being attacked uses null terminated strings. By placing a NULL byte in the string at a certain byte, the string will terminate at that point, nulling the rest of the string, such as a file extension.
+
+There are a number of ways to use the Poison Null Byte exploit, including the following:
+</p>
+<ul>
+    <li>The termination of a filename within a string, for example, a file extension.</li>
+    <li>Terminating or commenting an SQL statement when dynamically executing, such as Oracle’s ‘EXECUTE IMMEDIATE’.</li>
+  </ul>
+  <p>Example:
+    </p>
+    <p>
+    $file = $_GET['file'];  
+    <br>
+    require_once("/var/www/$file.php");  
+    <br><br>
+    While the above script appears to be secured by forcing the “.php” file extension, it could be exploited as follows: http://www.example.com/index.php?file=../../etc/passwd%00. This NULL byte injection would result in the mandatory appended file extension (.php) to be dropped, and the /etc/passwd file to be loaded.</p>
+       <p>Solution:</p>
+       <p>
+        There are a number of ways to prevent Poison Null Byte injections within PHP. These include escaping the NULL byte with a backslash, however, the most recommended way to do so is to completely remove the byte by using code similar to the following:
+        
+        $file = str_replace(chr(0), '', $string);  
+        </p>
+    </body>
+    
+
+</html>
+

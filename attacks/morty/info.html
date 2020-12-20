@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>ASET</title>
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+
+
+
+        <div class="navbar">
+            <div class="navbar-right">
+              <a style="color: #7FFF00;" href="morty.html">RMP</a>
+                <a href="../index.html">Home</a>
+
+     
+
+            </div>
+        </div>
+
+        <div class="titlu">
+            <h1>X-Forwarded-For</h1>
+        </div>
+        <br>
+        <p>The X-Forwarded-For (XFF) header is a de-facto standard header for identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer. When traffic is intercepted between clients and servers, server access logs contain the IP address of the proxy or load balancer only. To see the original IP address of the client, the X-Forwarded-For request header is used.
+
+            This header is used for debugging, statistics, and generating location-dependent content and by design it exposes privacy sensitive information, such as the IP address of the client. Therefore the user's privacy must be kept in mind when deploying this header.</p>
+            <div class="titlu">
+                <h3>Prevent X-Forwarded-For Spoofing or Manipulation</h3>
+            </div>
+<p>
+    Proxies operate on the premise that they exist to forward requests from one system to another. They generally add some value – otherwise they wouldn’t be in the middle – like load balancing (scale), data leak prevention (security), or compression (performance).
+
+    The thing is that the request sent by the client is otherwise passed, unmodified, to its target destination.
+</p>    <p>
+    Here’s where things can get dicey. Today, we see more than half of all apps delivered via a proxy make use of X-Forwarded-For. 56% of real, live apps are using it, which makes it a pretty significant piece of data. X-Forwarded-For is the custom HTTP header that carries along the original IP address of a client so the app at the other end knows what it is. Otherwise it would only see the proxy IP address.
+    
+    That’s because a good number of applications rely on knowing the actual IP address of a client to help prevent fraud and enable access. If you’ve logged into your bank, or Gmail from a device other than the one you typically use, you might have gotten a security warning. Because the information about where you log in from is also tracked, in part to detect attempted fraud and misuse.
+</p><p>
+    Your actual IP address is also used to allow or deny access in some systems, and as a means of deducing your physical location. That’s why those e-mail warnings often include “was that you logging in from Bulgaria?”
+    
+    Some systems also use X-Forwarded-For to enforce access control. WordPress, for example, uses the .htaccess file to allowlist access based on IP addresses. No, it’s not the best solution, but it’s a common one, and you have to at least give them props for trying to provide some app protection against misuse.
+</p>
+<p>
+    Irrespective of whether it’s a good idea or not, if you’re going to use X-Forwarded-For as part of your authentication or authorization scheme, you should probably make a  best effort attempt to ensure it’s actually the real client IP address. It is one of the more commonly used factors in the overall security equation; one that protects the consumer as much as it does corporate interests.
+    
+    But if you are blindly accepting whatever the client sends you in that header, you might be enabling someone to spoof the value and thereby bypass security mechanisms meant to prevent illegitimate access. By writing a few lines of code or grabbing one of the many browser plug-ins, everyone can manipulate HTTP headers with ease.
+</p><p> 
+    One of the ways to ensure that you’re getting the actual IP address is to not trust user input. Yes, there’s that Security Rule Zero again. Never trust user input. And we know that HTTP headers are user input, whether they appear to be or not.
+    
+    If you’ve got a proxy already, great. If not, you should get one. Because that’s how you extract and put the right value in X-Forwarded-For and stop spoofers in their tracks.
+</p><p>
+    Basically, you want your proxy to be able to reach into a request and find the actual, IP address that’s hidden in its IP packet. Some proxies can do that with configuration or policies, others require some programmatic magic. However you get it, that’s the value you put into the X-Forwarded-For HTTP header, and proceed as normal. Doing so ensures that the apps or downstream services have accurate information on which to make their decisions, including those regarding access and authorization.
+    
+    For most architectures and situations, this will mitigate the possibility of a spoofed X-Forwarded-For being used to gain unauthorized access. As always, the more pieces of information you have to form an accurate understanding of the client – and its legitimacy – the better your security. Combining IP address (in the X-Forwarded-For) with device type, user-agents, and other tidbits automatically carried along in HTTP and network protocols provides a more robust context in which to make an informed decision.
+
+                </p>
+    </body>
+    
+
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>ASET</title>
+        <link rel="stylesheet" type="text/css" href="../../style/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+
+
+
+        <div class="navbar">
+            <div class="navbar-right">
+              <a style="color: #7FFF00;" href="race_condition.html">RC</a>
+                <a href="../index.html">Home</a>
+
+            </div>
+        </div>
+
+        <div class="titlu">
+            <h1>Multiple likes</h1>
+        </div>
+      
+        <p>
+
+            Like any review at least three times as the same user.    
+           </p>
+           <ul>
+           <li>
+            Liking a review normally results in a request to http://localhost:3000/rest/products/reviews which associates the email of the user with the review (identified by the JSON body of e.g. {id: "ZQdzyRCbwQ4ys3PCG"}) and also increases its like counter by one. </li>
+            <li>If you try to replay the same request you will get a 403 Forbidden HTTP status with {"error":"Not allowed"} in the response..</li>
+            <li>Write a script that simultaneously executes three requests to http://juiceshop:port/rest/products/reviews with body e.g. {id: "ZQdzyRCbwQ4ys3PCG"} and run it.</li>
+            <li>If your 3 requests get handled asynchronously you will cause a race condition and all will get through and each increase the like counter by one to a total of three!.</li>
+
+</ul>
+            <img style="width: auto;height: auto; padding-right: 100px;" src="demo.png">
+          </body>
+          
+    
+
+</html>
+
