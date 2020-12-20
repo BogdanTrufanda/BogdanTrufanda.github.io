@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Payback Time</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Payback Time - Attack</h1>
+      </div>
+      <p style="font-size:160%;">
+         The first step to take in order to complete this type of attack is to login into application and order a product in quantity of two or more while BurpSuite is logging the requests. It is important to order two or more of the same product because in that case we will have the PUT request logged into HTTP History of BurpSuite and we can use it to do our job.
+      </p>
+      <img src="paybackTimeImage_1.jpg" id="img">
+      <p style="font-size:160%;">
+         As we can see above, there are differences between ordering a product in a quantity of one and ordering a product in a quantity of two or more. 
+      </p>
+      <p style="font-size:160%;">
+         If we try repeat the POST request from ordering a product with one quantity we have no success. 
+      </p>
+      <p style="font-size:160%;">
+         In this case we will get the PUT request and send it to Repeater in BurpSuite in order to change the quantity into a negative one.
+      </p>
+      <img src="paybackTimeImage_2.jpg">
+      <p style="font-size:160%;">
+         You can see that we can modify the quantity from the PUT request into a negative one and send the request.  
+      </p>
+      <p style="font-size:160%;">
+         Below you can see that we have successfully made the shop owe us a lot of cash.
+      </p>
+      <img src="paybackTimeImage_3.jpg">
+   </body>
+</html>

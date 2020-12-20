@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Product Tampering</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="productTampering.html">Product Tampering</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Product Tampering - Attack</h1>
+      </div>
+      <p style="font-size:160%;">
+         The first step to take in order to complete this type of attack is to login with an existing user and search for a product, o-saft for example, while monitoring with Burpsuite.
+      </p>
+      <img src="productTamperingImage_1.jpg">
+      <p style="font-size:160%;">
+         As we can see above, we have the GET request that is specific to item searching and we will send it to Repeater in order to make it useful.
+      </p>
+      <p style="font-size:160%;">
+         Below we can see the GET request in the repeater with a little modification on the 1st line : GET /rest/products/search?q=saft HTTP/1.1.
+         This will allow us to see the information of the product we want to modify and more exactly, the id of that product. 
+      </p>
+      <img src="productTamperingImage_2.jpg">
+      <p style="font-size:160%;">
+         In the next image we will see a GET response in BurpSuite that was send after we have clicked on product on the application in order too see it's reviews. We need this request to modify so we will send it in Repeater.
+      </p>
+      <img src="productTamperingImage_3.jpg">
+      <p style="font-size:160%;">
+         You can now see a whole transformation of the request we have logged because he will transform into an API request in order to be able to set the needed information on the targeted item. We will just take the right side informations and put it at the end of the request from the left.
+      </p>
+      <img src="productTamperingImage_4.jpg">
+      <p style="font-size:160%;">
+         After modifying the GET request from the Repeater, we will see that it will change after the first send and now we will have the information from the right on the left also.
+      </p>
+      <img src="productTamperingImage_5.jpg">
+      <p style="font-size:160%;">
+         Once the send was successfull we can delete all the information excepting the description because it contains the href we need to modify. On top to that just add the Content- Type from the right and there you go, you have changed the hyper link of that product.
+      </p>
+      <img src="productTamperingImage_6.jpg">
+   </body>
+</html>

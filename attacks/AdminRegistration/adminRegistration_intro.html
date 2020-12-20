@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Admin Registration</title>
+      <link rel="stylesheet" type="text/css"  href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" 			rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="adminRegistration.html">Admin Registration</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Admin Registration - Intro</h1>
+         </center>
+      </div>
+      <center>
+         <img src="adminRegistration_logo.jpg">
+      </center>
+      <p style="font-size:160%;">
+         This attack is an Improper Input Validation and we have to register as user with administration privileges. 
+      </p>
+      <p style="font-size:160%;">
+         What is Improper Input Validation?
+      </p>
+      <p style="font-size:160%;">
+	 When software does not validate input properly, an attacker is able to craft the input in a form that is not expected by the rest of the application. This will lead to parts of the system receiving unintended input, which may result in altered control flow, arbitrary control of a resource, or arbitrary code execution.
+      </p>
+      <p style="font-size:160%;">
+	 The Juice Shop does not bother to separate administrative functionality into a deployment unit of its own. Instead, the cheapest solution was chosen by simply leaving then admin features in the web shop itself and (allegedly) demanding a higher level of access to use them. 
+      </p>
+      <p style="font-size:160%;">
+	 In order to successfully perform such an attack we have two main checkpoints to achieve:
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            Register as an ordinary user to learn what API endpoints are involved in this use case.
+         </li>
+         <li>
+            Think of the simplest possible implementations of a distinction between regular users and administrators. 
+         </li>
+      </ul>
+   </body>
+</html>

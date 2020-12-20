@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Cross-site Request Forgery</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="csrf.html">Cross-site Request Forgery</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Cross-site Request Forgery - Mitigation</h1>
+         </center>
+      </div>
+      <p style="font-size:160%;font-weight: bold">
+         Preventing CSRF attacks
+      </p>
+      <p style="font-size:160%;">
+         The most robust way to defend against CSRF attacks is to include a CSRF token within relevant requests. The token should be:
+      </p>
+      <ul style="font-size:140%;">
+         <li>
+            Unpredictable with high entropy, as for session tokens in general.  
+         </li>
+         <li>
+            Tied to the user's session.  
+         </li>
+         <li>
+            Strictly validated in every case before the relevant action is executed.  
+         </li>
+      </ul>
+      <p style="font-size:160%;">
+         An additional defense that is partially effective against CSRF, and can be used in conjunction with CSRF tokens, is SameSite cookies.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Common CSRF vulnerabilities
+      </p>
+      <p style="font-size:160%;">
+         Most interesting CSRF vulnerabilities arise due to mistakes made in the validation of CSRF tokens.  
+      </p>
+      <p style="font-size:160%;">
+         In the previous example, suppose that the application now includes a CSRF token within the request to change the user's password:  
+      </p>
+      <p style="font-size:120%;">
+         "POST /email/change HTTP/1.1				
+      </p>
+      <p style="font-size:120%;">
+         Host: vulnerable-website.com				
+      </p>
+      <p style="font-size:120%;">
+         Content-Type: application/x-www-form-urlencoded				
+      </p>
+      <p style="font-size:120%;">
+         Content-Length: 68				
+      </p>
+      <p style="font-size:120%;">
+         Cookie: session=2yQIDcpia41WrATfjPqvm9tOkDvkMvLm				
+      </p>
+      <p style="font-size:120%;">
+         csrf=WfF1szMUHhiokx9AHFply5L2xAOfjRkE&email=wiener@normal-user.com  "				
+      </p>
+      <p style="font-size:160%;">
+         This ought to prevent CSRF attacks because it violates the necessary conditions for a CSRF vulnerability: the application no longer relies solely on cookies for session handling, and the request contains a parameter whose value an attacker cannot determine. However, there are various ways in which the defense can be broken, meaning that the application is still vulnerable to CSRF.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Referer-based defenses against CSRF
+      </p>
+      <p style="font-size:160%;">
+         Aside from defenses that employ CSRF tokens, some applications make use of the HTTP Referer header to attempt to defend against CSRF attacks, normally by verifying that the request originated from the application's own domain. This approach is generally less effective and is often subject to bypasses.
+      </p>
+   </body>
+</html>

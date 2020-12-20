@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Admin Registration</title>
+      <link rel="stylesheet" type="text/css" href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="adminRegistration.html">Admin Registration</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <h1>Admin Registration - Attack</h1>
+      </div>
+      <p style="font-size:160%;">
+         The first step to take in order to complete this type of attack is to register a new user and to use BurpSuite to see the request it is made when a new user is registered.
+      </p>
+      <img src="adminRegistrationImage_1.jpg">
+      <p style="font-size:160%;">
+         As we can see above, the response from the server contains one field called 'role' which is given the value 'custommer' as soon as the request is completed. 
+      </p>
+      <p style="font-size:160%;">
+         In this case we can assume that if no role is specified within the request of creating a new user, the default value for the 'role' field will be 'custommer'. 
+      </p>
+      <p style="font-size:160%;">
+         In this case we will get the POST request and send it to Repeater in BurpSuite in order to add the missing field 'role' from the beggining.
+      </p>
+      <img src="adminRegistrationImage_2.jpg">
+      <p style="font-size:160%;">
+         You can see that once we have introduced the 'role' field and the value we want to asign to it and we hit the send button, our POST request is successfull and we have a new user with administration rights.  
+      </p>
+      <p style="font-size:160%;">
+         Below you can see that the user was created with the credentials we used in the POST request in the Repeater.
+      </p>
+      <img src="adminRegistrationImage_3.jpg">
+   </body>
+</html>

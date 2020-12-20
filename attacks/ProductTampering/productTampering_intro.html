@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ASET - Product Tampering</title>
+      <link rel="stylesheet" type="text/css"  href="../../style/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap" 			rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <div class="navbar">
+         <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a href="../../attacks/all.html">Attacks</a>
+            <a style="color: #7FFF00;" href="productTampering.html">Product Tampering</a>
+         </div>
+      </div>
+      <div class="titlu">
+         <center>
+            <h1 style="font-size:260%;">Product Tampering - Intro</h1>
+         </center>
+      </div>
+      <p style="font-size:160%;font-weight: bold">
+         About
+      </p>
+      <p style="font-size:160%;">
+	 The Web Parameter Tampering attack is based on the manipulation of parameters exchanged between client and server in order to modify application data, such as user credentials and permissions, price and quantity of products, etc. Usually, this information is stored in cookies, hidden form fields, or URL Query Strings, and is used to increase application functionality and control.
+      </p>
+      <p style="font-size:160%;">
+         This attack can be performed by a malicious user who wants to exploit the application for their own benefit, or an attacker who wishes to attack a third-person using a Man-in-the-middle attack. In both cases, tools likes Webscarab and Paros proxy are mostly used.
+      </p>
+      <p style="font-size:160%;">
+         The attack success depends on integrity and logic validation mechanism errors, and its exploitation can result in other consequences including XSS, SQL Injection, file inclusion, and path disclosure attacks.
+      </p>
+      <p style="font-size:160%;font-weight: bold">
+         Examples
+      </p>
+      <ul style="font-size:140%;">
+	<li>
+	The parameter modification of form fields can be considered a typical example of Web Parameter Tampering attack.
+	</li>
+	<li>
+	When a web application uses hidden fields to store status information, a malicious user can tamper with the values stored on their browser and change the referred information. 
+	</li>
+	<li>
+        An attacker can tamper with URL parameters directly. For example, consider a web application that permits a user to select their profile from a combo box and debit the account. In this case, an attacker could tamper with the URL, using other values for profile and debit.   
+	</li>
+      </ul>
+   </body>
+</html>
