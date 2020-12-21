@@ -23,27 +23,77 @@
     </div>
 
     <div class="titlu">
-        <h1>Exploiting Unrestricted Injection</h1>
+        <h1>Prevent SQL Injection</h1>
     </div>
+    <p>
 
+        The most important precautions are data sanitization and validation, which should already be in place.
+        Sanitization usually involves running any submitted data through a function (such as MySQL's
+        mysql_real_escape_string() function) to ensure that any dangerous characters (like " ' ") are not passed to a
+        SQL query in data.
+    </p>
+    <p>
+        Validation is slightly different, in that it attempts to ensure that the data submitted is in the form that is
+        expected. At the most basic level this includes ensuring that e-mail addresses contain an "@" sign, that only
+        digits are supplied when integer data is expected, and that the length of a piece of data submitted is not
+        longer than the maximum expected length. Validation is often carried out in two ways: by blacklisting dangerous
+        or unwanted characters (although hackers can often get around blacklists) and by whitelisting only those
+        characters that are allowed in a given circumstance, which can involve more work on the part of the programmer.
+        Although validation may take place on the client side, hackers can modify or get around this, so it's essential
+        that you also validate all data on the server side as well.
+    </p>
+    <p>
+        But sanitization and validation are far from the whole story. Here are ten ways you can help prevent or mitigate
+        SQL injection attacks:
+    </p>
     <ul>
-        <li>1) 
-            <p>
-               ---
-            </p>
+        <li> Trust no-one: Assume all user-submitted data is evil and validate and sanitize everything.
         </li>
-        <li>2) 
-            <p>---
-            </p>
+        <li>Don't use dynamic SQL when it can be avoided: used prepared statements, parameterized queries or stored
+            procedures instead whenever possible.
         </li>
-        <li>3) 
-
-            <p>---
-            </p>
+        <li>Update and patch: vulnerabilities in applications and databases that hackers can exploit using SQL injection
+            are
+            regularly discovered, so it's vital to apply patches and updates as soon as practical.
         </li>
+        <li>Firewall: Consider a web application firewall (WAF) – either software or appliance based – to help filter
+            out
+            malicious data. Good ones will have a comprehensive set of default rules, and make it easy to add new ones
+            whenever necessary. A WAF can be particularly useful to provide some security protection against a
+            particular
+            new vulnerability before a patch is available.
+        </li>
+        <li>Reduce your attack surface: Get rid of any database functionality that you don't need to prevent a hacker
+            taking
+            advantage of it. For example, the xp_cmdshell extended stored procedure in MS SQL spawns a Windows command
+            shell
+            and passes in a string for execution, which could be very useful indeed for a hacker. The Windows process
+            spawned by xp_cmdshellhas the same security privileges as the SQL Server service account.
+        </li>
+        <li>Use appropriate privileges:don't connect to your database using an account with admin-level privileges
+            unless
+            there is some compelling reason to do so. Using a limited access account is far safer, and can limit what a
+            hacker is able to do.
+        </li>
+        <li>Keep your secrets secret:Assume that your application is not secure and act accordingly by encrypting or
+            hashing
+            passwords and other confidential data including connection strings.
+        </li>
+        <li>Don't divulge more information than you need to:hackers can learn a great deal about database architecture
+            from
+            error messages, so ensure that they display minimal information. Use the "RemoteOnly" customErrors mode (or
+            equivalent) to display verbose error messages on the local machine while ensuring that an external hacker
+            gets
+            nothing more than the fact that his actions resulted in an unhandled error.
+        </li>
+        <li>Don't forget the basics: Change the passwords of application accounts into the database regularly. This is
+            common sense, but in practice these passwords often stay unchanged for months or even years.
+        </li>
+        <li>Buy better software: Make code writers responsible for checking the code and for fixing security flaws in
+            custom
+            applications before the software is delivered. SANS suggests you incorporate terms from this sample contract
+            into your agreement with any software vendor.</li>
     </ul>
-        <p>??
-        </p>
 </body>
 
 </html>
