@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ASET - About DOM XSS</title>
+  <link rel="stylesheet" type="text/css" href="../../style/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="navbar-right">
+      <a href="../../index.html">Home</a>
+      <a href="../../tools/tools.html">Tools</a>
+      <a style="color: #7FFF00;" href="../../attacks/DOM XSS/DOMXSS.html">DOM XSS</a>
+    </div>
+  </div>
+
+  <div class="titlu">
+    <h1>DOM XSS</h1>
+  </div>
+
+  <p>
+    The Document Object Model (DOM) is a web browser's hierarchical representation of the elements on the page. Websites
+    can use JavaScript to manipulate the nodes and objects of the DOM, as well as their properties. DOM manipulation in
+    itself is not a problem. In fact, it is an integral part of how modern websites work. However, JavaScript that
+    handles data insecurely can enable various attacks. DOM-based vulnerabilities arise when a website contains
+    JavaScript that takes an attacker-controllable value, known as a source, and passes it into a dangerous function,
+    known as a sink.
+  </p>
+  <img src="DOMXSS.png" alt="imagine" style="width:700px; height:100%">
+
+  <p>
+    The following list provides a quick overview of common DOM-based vulnerabilities and an example of a sink that can
+    lead to each one. For a more comprehensive list of relevant sinks, please refer to the vulnerability-specific pages
+    by clicking the links below.
+  <ul>
+    <li>DOM-based vulnerability <i>Example sink</i>
+    </li>
+    <li>DOM XSS LABS <i>document.write()</i>
+    </li>
+    <li>Open redirection LABS <i>window.location</i>
+    </li>
+    <li>Cookie manipulation LABS <i>document.cookie</i>
+    </li>
+    <li>JavaScript injection <i>eval()</i>
+    </li>
+    <li>Document-domain manipulation <i>document.domain</i>
+    </li>
+    <li>WebSocket-URL poisoning <i>WebSocket()</i>
+    </li>
+    <li>Link manipulation <i>someElement.src</i>
+    </li>
+    <li>Web-message manipulation <i>postMessage()</i>
+    </li>
+    <li>Ajax request-header manipulation <i>setRequestHeader()</i>
+    </li>
+    <li>Local file-path manipulation <i>FileReader.readAsText()</i>
+    </li>
+    <li>Client-side SQL injection <i>ExecuteSql()</i>
+    </li>
+    <li>HTML5-storage manipulation <i>sessionStorage.setItem()</i>
+    </li>
+    <li>Client-side XPath injection <i>document.evaluate()</i>
+    </li>
+    <li>Client-side JSON injection <i>JSON.parse()</i>
+    </li>
+    <li>DOM-data manipulation <i>someElement.setAttribute()</i>
+    </li>
+    <li>Denial of service <i>RegExp()</i></li>
+
+  </ul>
+
+  </p>
+</body>
+
+</html>

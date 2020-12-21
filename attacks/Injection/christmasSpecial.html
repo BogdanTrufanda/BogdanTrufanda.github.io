@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASET - Christmas special attack</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="../../index.html">Home</a>
+            <a href="../../tools/tools.html">Tools</a>
+            <a style="color: #7FFF00;" href="../../attacks/Injection/injection.html">Injection</a>
+        </div>
+    </div>
+
+    <div class="titlu">
+        <h1>Order the Christmas special offer of 2014</h1>
+    </div>
+
+    <p>
+        To solve this challenge you need to order a product that is not supposed to be available any more.
+    </p>
+    <ul>
+        <li>Find out how the application hides deleted products from its customers.</li>
+        <li>Try to craft an attack string that makes deleted products visible again.</li>
+        <li>You need to get the deleted product into your shopping cart and trigger the Checkout.</li>
+        <li>Neither of the above can be achieved through the application frontend and it might even require (half-)Blind SQL Injection.</li>
+    </ul>
+
+    <p>
+        Steps:
+    </p>
+    <ul>
+
+        <li>Open https://aset2020.herokuapp.com/#/search and reload the page with F5 while observing the HTTP Requests History in Burp </li>
+        <li>Recognize the GET request https://aset2020.herokuapp.com/rest/products/search?q= which returns the product data. </li>
+        <li>Submitting any SQL payloads via the Search field in the navigation bar will do you no good, as it is only applying filters onto 
+            the entire data set what was retrieved with a singular call upon loading the page. </li>
+        <li>In that light, the q= parameter on the https://aset2020.herokuapp.com/rest/products/search endpoint would not even be needed, but might be 
+            a relic from a different implementation of the search functionality. Test this theory by submitting https://aset2020.herokuapp.com/rest/products/search?q=orange 
+            which should give you a result such as
+        </li>
+        <li>Submit '; as q viahttps://aset2020.herokuapp.com/rest/products/search?q='; </li>
+        <li>You are now in the area of Blind SQL Injection, where trying create valid queries is a matter of patience, observance and a bit of luck. </li>
+        <li>Using '))-- for q fixes the syntax and successfully retrieves all products, including the (logically deleted) Christmas offer. Take note of its id (which should be 10)
+        </li>
+        <li>Go to https://aset2020.herokuapp.com/#/login and log in as any user. </li>
+        <li>Add any regularly available product into you shopping basket to prevent problems at checkout later. Memorize your BasketId value in the request payload (when viewing 
+            the Network tab) or find the same information in the bid variable in your browser's Session Storage (in the Application tab). </li>
+        <li>Craft and send a POST request to http://localhost:3000/api/BasketItems with
+            {"BasketId": "<Your Basket ID>", "ProductId": 10, "quantity": 1} as body and application/json as Content-Type</li>
+        <li>Go to https://aset2020.herokuapp.com/#/basket to verify that the "Christmas Super-Surprise-Box (2014 Edition)" is in the basket. </li>
+        <li>Click Checkout on the Your Basket page to solve the challenge./li>
+    
+    </ul>
+
+    <ul class="liste">
+        <li><a href="christmasSpecial.mp4" target="_blank">Demo</a></li>
+    </ul>
+
+</body>
+
+</html>
