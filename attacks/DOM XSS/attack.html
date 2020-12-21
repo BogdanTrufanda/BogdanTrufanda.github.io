@@ -18,15 +18,6 @@
         <div class="navbar-right">
             <a href="../../index.html">Home</a>
             <a href="../../tools/tools.html">Tools</a>
-            <div class="dropdown">
-                <button class="dropbtn">Attacks</button>
-                <div class="dropdown-content">
-                    <a href="../../attacks/all.html">All</a>
-                    <a href="../../attacks/sqlinjection.html">SQL injection</a>
-                    <a href="../../ttacks/XSS.html">XSS</a>
-                    <a href="../../attacks/IUV.html">Improper Input Validation</a>
-                </div>
-            </div>
             <a style="color: #7FFF00;" href="../../attacks/DOM XSS/DOMXSS.html">DOM XSS</a>
         </div>
     </div>
@@ -35,24 +26,23 @@
         <h1>Exploiting Unrestricted DOM XSS</h1>
     </div>
 
-    <ul>
-        <li>1) ??
-            <p>
-               ---
-            </p>
-        </li>
-        <li>2) ??
-            <p>---
-            </p>
-        </li>
-        <li>3) ??
+    
+        <p>
+            There is no single action you can take to eliminate the threat of DOM-based attacks entirely. However,
+            generally speaking, the most effective way to avoid DOM-based vulnerabilities is to avoid allowing data
+            from any untrusted source to dynamically alter the value that is transmitted to any sink.
 
-            <p>---
-            </p>
-        </li>
-    </ul>
-        <p>---
+            If the desired functionality of the application means that this behavior is unavoidable, then defenses
+            must be implemented within the client-side code. In many cases, the relevant data can be validated on a
+            whitelist basis, only allowing content that is known to be safe. In other cases, it will be necessary to
+            sanitize or encode the data. This can be a complex task, and depending on the context into which the
+            data is to be inserted, may involve a combination of JavaScript escaping, HTML encoding, and URL
+            encoding, in the appropriate sequence.
         </p>
+
+            <p>In addition to the general measures described on the DOM-based vulnerabilities page, you should avoid
+                allowing data from any untrusted source to dynamically pass data into problematic platform APIs.
+            </p>
 
 </body>
 

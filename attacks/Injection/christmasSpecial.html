@@ -18,15 +18,6 @@
         <div class="navbar-right">
             <a href="../../index.html">Home</a>
             <a href="../../tools/tools.html">Tools</a>
-            <div class="dropdown">
-                <button class="dropbtn">Attacks</button>
-                <div class="dropdown-content">
-                    <a href="../../attacks/all.html">All</a>
-                    <a href="../../attacks/sqlinjection.html">SQL injection</a>
-                    <a href="../../attacks/XSS.html">XSS</a>
-                    <a href="../../attacks/IUV.html">Improper Input Validation</a>
-                </div>
-            </div>
             <a style="color: #7FFF00;" href="../../attacks/Injection/injection.html">Injection</a>
         </div>
     </div>
@@ -50,36 +41,30 @@
     </p>
     <ul>
 
-        <li>Open http://localhost:3000/#/search and reload the page with F5 while observing the Network tab in your browser's DevTools </li>
-        <li>Recognize the GET request http://localhost:3000/rest/products/search?q= which returns the product data. </li>
+        <li>Open https://aset2020.herokuapp.com/#/search and reload the page with F5 while observing the HTTP Requests History in Burp </li>
+        <li>Recognize the GET request https://aset2020.herokuapp.com/rest/products/search?q= which returns the product data. </li>
         <li>Submitting any SQL payloads via the Search field in the navigation bar will do you no good, as it is only applying filters onto 
             the entire data set what was retrieved with a singular call upon loading the page. </li>
-        <li>In that light, the q= parameter on the http://localhost:3000/rest/products/search endpoint would not even be needed, but might be 
-            a relic from a different implementation of the search functionality. Test this theory by submitting http://localhost:3000/rest/products/search?q=orange 
+        <li>In that light, the q= parameter on the https://aset2020.herokuapp.com/rest/products/search endpoint would not even be needed, but might be 
+            a relic from a different implementation of the search functionality. Test this theory by submitting https://aset2020.herokuapp.com/rest/products/search?q=orange 
             which should give you a result such as
-            <img src="forStep4.png">
         </li>
-        <li>Submit '; as q via http://localhost:3000/rest/products/search?q='; </li>
-        <li>You will receive an error page with a SQLITE_ERROR: syntax error mentioned, indicating that SQL Injection is indeed possible.
-            <img src="forStep6.png">
-        </li>
+        <li>Submit '; as q viahttps://aset2020.herokuapp.com/rest/products/search?q='; </li>
         <li>You are now in the area of Blind SQL Injection, where trying create valid queries is a matter of patience, observance and a bit of luck. </li>
-        <li>Varying the payload into '-- for q results in a SQLITE_ERROR: incomplete input. This error happens due to two (now unbalanced) parenthesis in the query. </li>
         <li>Using '))-- for q fixes the syntax and successfully retrieves all products, including the (logically deleted) Christmas offer. Take note of its id (which should be 10)
-            <img src="forStep9.png">
         </li>
-        <li>Go to http://localhost:3000/#/login and log in as any user. </li>
+        <li>Go to https://aset2020.herokuapp.com/#/login and log in as any user. </li>
         <li>Add any regularly available product into you shopping basket to prevent problems at checkout later. Memorize your BasketId value in the request payload (when viewing 
             the Network tab) or find the same information in the bid variable in your browser's Session Storage (in the Application tab). </li>
         <li>Craft and send a POST request to http://localhost:3000/api/BasketItems with
             {"BasketId": "<Your Basket ID>", "ProductId": 10, "quantity": 1} as body and application/json as Content-Type</li>
-        <li>Go to http://localhost:3000/#/basket to verify that the "Christmas Super-Surprise-Box (2014 Edition)" is in the basket. </li>
+        <li>Go to https://aset2020.herokuapp.com/#/basket to verify that the "Christmas Super-Surprise-Box (2014 Edition)" is in the basket. </li>
         <li>Click Checkout on the Your Basket page to solve the challenge./li>
     
     </ul>
 
     <ul class="liste">
-        <li><a href="VisualGeoStalking.mp4" target="_blank">Demo</a></li>
+        <li><a href="christmasSpecial.mp4" target="_blank">Demo</a></li>
     </ul>
 
 </body>
