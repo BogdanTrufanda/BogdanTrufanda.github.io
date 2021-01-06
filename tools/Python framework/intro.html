@@ -24,32 +24,21 @@
         <a style="color: #7FFF00;" href="python.html">Python AF</a>
             </div>
         </div>
-        <img src="logo.png">
-<p>The purpose of this framework is to replicate the already existing tools out there, in order to fully understand and explain the processes behind the scene. At this moment.
-    the framework consist of six attack vectors. These are:
+        <img src="front_gui.png">
+<p>The purpose of this framework is to replicate some of the already existing tools out there, in order to fully understand and explain the processes behind the scene.
+    the framework consist of ten attack vectors.
 </p>
 <ul>
-    <li>Login HTTP brute forcer</li>
-    <pre>* replicates ZAP proxy / Burpsuite tools *</pre>
-    <li>Directory bruteforcer</li>
-    <pre>* replicates Wfuzz / Dirbuster / Gobuster  tools *</pre>
-    <li>Password cracker</li>
-    <pre>* replicates John the ripper/ Hashcat tools *</pre>
-    <li>OSINT</li>
-    <pre>* Open-source intelligence (OSINT) is a multi-methods (qualitative, quantitative) methodology for collecting,
-analyzing and making decisions about data accessible in publicly available sources to be used in an intelligence context. *</pre>
-    <li>Forged JWT</li>
-    <pre>* JSON Web Token is an Internet standard for creating data with optional signature and/or optional encryption whose payload holds JSON that asserts
-some number of claims. The tokens are signed either using a private secret or a public/private key. For example, a server could generate a token that 
-has the claim "logged in as admin" and provide that to a client. The client could then use that token to prove that it is logged in as admin *</pre>
-    <li>Vulnerable components</li>
-    <pre>* Some vulnerable components (e.g., framework libraries) can be identified and exploited with automated tools, expanding the threat agent pool beyond 
-targeted attackers to include chaotic actors. Virtually every application has these issues because most development teams don't focus on ensuring their 
-components/libraries are up to date. In many cases, the developers don't even know all the components they are using,
-never mind their versions. Component dependencies make things even worse. *</pre>
-    <li>...</li>
-    <pre>* ... *</pre>
-</ul>
+    <li>Decode JWT - decode any JWT and getting its payload data</li>
+      <li>Reverse shell - Create a shell listener</li>
+        <li>Brute forcer <br>- Send get/post/put/patch request to an endpoint. <br> - Leet a word <br> - Make all possible combinations with the given characters</li>
+          <li>HTTP Fuzzer - Directory brute forcer</li>
+            <li>Race condition - Send multiple request at the same time</li>
+              <li>Social media tracker - Find on which social media sites a person have accounts</li>
+                <li>Password cracker - detect hash type and crack them</li>
+                  <li>OSINT <br> - find location based on coordinates (lat,lang)<br> - Extract EXIF data from pictures</li>
+                    <li>CVE finder - Find all known vulnerabilities of a given service</li>
+                      <li>Service scanner - detect open ports and the services/versions running on those ports</li>
 
     </body>
 
